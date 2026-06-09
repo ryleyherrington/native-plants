@@ -16,8 +16,10 @@ struct ContentView: View {
     @State private var selectedDifficulties = Set<String>()
     @State private var selectedBloomTimes = Set<String>()
     @State private var selectedTraits = Set<String>()
+    @State private var collapsedSections = Set<String>()
     @State private var showsLegend = false
     @State private var showsPlanner = false
+    @State private var showsFilters = false
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     @State private var preferredCompactColumn = NavigationSplitViewColumn.sidebar
 
@@ -57,6 +59,10 @@ struct ContentView: View {
         }
     }
 
+    private var activeFilterCount: Int {
+        selectedSections.count + selectedDifficulties.count + selectedBloomTimes.count + selectedTraits.count
+    }
+
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility, preferredCompactColumn: $preferredCompactColumn) {
             catalogColumn
@@ -74,28 +80,49 @@ struct ContentView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    FilterPanel(
-                        sections: PlantCatalog.sectionOrder,
-                        difficulties: difficulties,
-                        bloomTimes: bloomTimes,
-                        traits: traits,
-                        selectedSections: $selectedSections,
-                        selectedDifficulties: $selectedDifficulties,
-                        selectedBloomTimes: $selectedBloomTimes,
-                        selectedTraits: $selectedTraits
-                    )
-
                     ForEach(groupedPlants, id: \.0) { section, plants in
-                        PlantSection(section: section, plants: plants, layoutMode: layoutMode)
+                        PlantSection(
+                            section: section,
+                            plants: plants,
+                            layoutMode: layoutMode,
+                            isCollapsed: collapsedBinding(for: section)
+                        )
                     }
                 }
                 .padding(.horizontal)
+                .padding(.top, 8)
                 .padding(.bottom, 28)
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Native Plants")
+            .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, prompt: "Search names, bloom, notes, traits")
+            .navigationDestination(for: Plant.self) { plant in
+                PlantDetailView(plant: plant)
+            }
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showsFilters = true
+                    } label: {
+                        Label("Filters", systemImage: activeFilterCount > 0 ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                    }
+                    .tint(activeFilterCount > 0 ? .green : nil)
+                    .accessibilityLabel(activeFilterCount > 0 ? "Filters, \(activeFilterCount) active" : "Filters")
+                    .overlay(alignment: .topTrailing) {
+                        if activeFilterCount > 0 {
+                            Text("\(activeFilterCount)")
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 5)
+                                .padding(.vertical, 1)
+                                .background(Color.green, in: Capsule())
+                                .offset(x: 8, y: -8)
+                                .accessibilityHidden(true)
+                        }
+                    }
+                }
+
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Picker("Layout", selection: $layoutMode) {
                         ForEach(LayoutMode.allCases) { mode in
@@ -120,6 +147,18 @@ struct ContentView: View {
                     .accessibilityLabel("Show plant icon key")
                 }
             }
+            .sheet(isPresented: $showsFilters) {
+                FilterSheet(
+                    sections: PlantCatalog.sectionOrder,
+                    difficulties: difficulties,
+                    bloomTimes: bloomTimes,
+                    traits: traits,
+                    selectedSections: $selectedSections,
+                    selectedDifficulties: $selectedDifficulties,
+                    selectedBloomTimes: $selectedBloomTimes,
+                    selectedTraits: $selectedTraits
+                )
+            }
         }
     }
 
@@ -139,6 +178,20 @@ struct ContentView: View {
         showsPlanner = true
         columnVisibility = .all
         preferredCompactColumn = .detail
+    }
+
+    private func collapsedBinding(for section: String) -> Binding<Bool> {
+        Binding {
+            collapsedSections.contains(section)
+        } set: { isCollapsed in
+            withAnimation(.snappy(duration: 0.2)) {
+                if isCollapsed {
+                    collapsedSections.insert(section)
+                } else {
+                    collapsedSections.remove(section)
+                }
+            }
+        }
     }
 }
 
@@ -174,7 +227,7 @@ private struct PlannerPlaceholderView: View {
     }
 }
 
-private struct FilterPanel: View {
+private struct FilterSheet: View {
     let sections: [String]
     let difficulties: [String]
     let bloomTimes: [String]
@@ -183,28 +236,46 @@ private struct FilterPanel: View {
     @Binding var selectedDifficulties: Set<String>
     @Binding var selectedBloomTimes: Set<String>
     @Binding var selectedTraits: Set<String>
+    @Environment(\.dismiss) private var dismiss
+
+    private var hasActiveFilters: Bool {
+        !(selectedSections.isEmpty && selectedDifficulties.isEmpty && selectedBloomTimes.isEmpty && selectedTraits.isEmpty)
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("Filters")
-                    .font(.headline)
-                Spacer()
-                Button("Clear") {
-                    selectedSections.removeAll()
-                    selectedDifficulties.removeAll()
-                    selectedBloomTimes.removeAll()
-                    selectedTraits.removeAll()
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    ChipRow(title: "Section", values: sections, selection: $selectedSections)
+                    ChipRow(title: "Ease", values: difficulties, selection: $selectedDifficulties)
+                    ChipRow(title: "Bloom", values: bloomTimes, selection: $selectedBloomTimes)
+                    ChipRow(title: "Traits", values: traits, selection: $selectedTraits)
                 }
-                .disabled(selectedSections.isEmpty && selectedDifficulties.isEmpty && selectedBloomTimes.isEmpty && selectedTraits.isEmpty)
+                .padding()
             }
-
-            ChipRow(title: "Section", values: sections, selection: $selectedSections)
-            ChipRow(title: "Ease", values: difficulties, selection: $selectedDifficulties)
-            ChipRow(title: "Bloom", values: bloomTimes, selection: $selectedBloomTimes)
-            ChipRow(title: "Traits", values: traits, selection: $selectedTraits)
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Filters")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Clear") {
+                        selectedSections.removeAll()
+                        selectedDifficulties.removeAll()
+                        selectedBloomTimes.removeAll()
+                        selectedTraits.removeAll()
+                    }
+                    .disabled(!hasActiveFilters)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .fontWeight(.semibold)
+                }
+            }
         }
-        .padding(.top, 8)
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 }
 
@@ -214,27 +285,24 @@ private struct ChipRow: View {
     @Binding var selection: Set<String>
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.caption)
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-                    ForEach(values, id: \.self) { value in
-                        Button {
-                            if selection.contains(value) {
-                                selection.remove(value)
-                            } else {
-                                selection.insert(value)
-                            }
-                        } label: {
-                            ChipLabel(value: value, isSelected: selection.contains(value))
+            FlowLayout(spacing: 8) {
+                ForEach(values, id: \.self) { value in
+                    Button {
+                        if selection.contains(value) {
+                            selection.remove(value)
+                        } else {
+                            selection.insert(value)
                         }
-                        .buttonStyle(.plain)
+                    } label: {
+                        ChipLabel(value: value, isSelected: selection.contains(value))
                     }
+                    .buttonStyle(.plain)
                 }
-                .padding(.vertical, 1)
             }
         }
     }
@@ -267,48 +335,67 @@ private struct PlantSection: View {
     let section: String
     let plants: [Plant]
     let layoutMode: LayoutMode
+    @Binding var isCollapsed: Bool
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private var columns: [GridItem] {
-        [
-            GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 12),
-            GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 12)
-        ]
+        // 3 columns on regular width (iPad full screen), 2 on compact (iPhone, iPad slide-over).
+        let count = horizontalSizeClass == .regular ? 3 : 2
+        return Array(
+            repeating: GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 12),
+            count: count
+        )
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(section)
-                    .font(.title3.bold())
-                Text("\(plants.count)")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
+            Button {
+                isCollapsed.toggle()
+            } label: {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(section)
+                        .font(.title3.bold())
+                        .foregroundStyle(.primary)
+                    Text("\(plants.count)")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.secondary)
 
-            if layoutMode == .grid {
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(plants) { plant in
-                        NavigationLink(value: plant) {
-                            PlantGridCard(plant: plant)
-                                .frame(height: PlantGridCard.cardHeight)
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.plain)
-                    }
+                    Spacer(minLength: 0)
+
+                    Image(systemName: isCollapsed ? "chevron.down" : "chevron.up")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .frame(width: 32, height: 32)
                 }
-            } else {
-                LazyVStack(spacing: 10) {
-                    ForEach(plants) { plant in
-                        NavigationLink(value: plant) {
-                            PlantListRow(plant: plant)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(isCollapsed ? "Expand \(section)" : "Collapse \(section)")
+
+            if !isCollapsed {
+                if layoutMode == .grid {
+                    LazyVGrid(columns: columns, spacing: 12) {
+                        ForEach(plants) { plant in
+                            NavigationLink(value: plant) {
+                                PlantGridCard(plant: plant)
+                                    .frame(height: PlantGridCard.cardHeight)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
+                    }
+                } else {
+                    LazyVStack(spacing: 10) {
+                        ForEach(plants) { plant in
+                            NavigationLink(value: plant) {
+                                PlantListRow(plant: plant)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
             }
-        }
-        .navigationDestination(for: Plant.self) { plant in
-            PlantDetailView(plant: plant)
         }
     }
 }
