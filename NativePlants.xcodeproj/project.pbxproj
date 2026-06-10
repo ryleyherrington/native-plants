@@ -12,6 +12,9 @@
 		58E032B40CA14B22A3B384F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3A94D4A9D34E21B261AA73 /* Assets.xcassets */; };
 		6BA472F3EBD33B8BE036F033 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = AC5541388E6ACC044CEE146D /* Images */; };
 		ABEE149E3D01E304D38E83DB /* plants.json in Resources */ = {isa = PBXBuildFile; fileRef = 5865A93F753603A008124015 /* plants.json */; };
+		A10000000000000000000001 /* WateringSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* WateringSchedule.swift */; };
+		A10000000000000000000002 /* WateringAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* WateringAppIntents.swift */; };
+		A10000000000000000000003 /* WateringCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* WateringCalendarView.swift */; };
 		C1FBE811FBE417FF73422D7A /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C04D8B869B1ADCFDC58F7 /* Plant.swift */; };
 		C6A5AA1937C362EFE96D3E28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EED8A2ED0BAE0359DC140A /* ContentView.swift */; };
 		D6717D5AF31D426090AC7B7C /* PlantIconography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7342AE2EA49B68284D7BA /* PlantIconography.swift */; };
@@ -24,6 +27,9 @@
 		4C3A94D4A9D34E21B261AA73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5865A93F753603A008124015 /* plants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = plants.json; sourceTree = "<group>"; };
 		83B7342AE2EA49B68284D7BA /* PlantIconography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantIconography.swift; sourceTree = "<group>"; };
+		A20000000000000000000001 /* WateringSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WateringSchedule.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* WateringAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WateringAppIntents.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* WateringCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WateringCalendarView.swift; sourceTree = "<group>"; };
 		A97C29AD63741CF438998CE6 /* NativePlants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativePlants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5541388E6ACC044CEE146D /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		B5EED8A2ED0BAE0359DC140A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +57,9 @@
 				B5EED8A2ED0BAE0359DC140A /* ContentView.swift */,
 				83B7342AE2EA49B68284D7BA /* PlantIconography.swift */,
 				F2D6C1A807B94E5DA3C8F104 /* PlantPlanner.swift */,
+				A20000000000000000000001 /* WateringSchedule.swift */,
+				A20000000000000000000002 /* WateringAppIntents.swift */,
+				A20000000000000000000003 /* WateringCalendarView.swift */,
 				5865A93F753603A008124015 /* plants.json */,
 				AC5541388E6ACC044CEE146D /* Images */,
 				4C3A94D4A9D34E21B261AA73 /* Assets.xcassets */,
@@ -151,6 +160,9 @@
 				C6A5AA1937C362EFE96D3E28 /* ContentView.swift in Sources */,
 				D6717D5AF31D426090AC7B7C /* PlantIconography.swift in Sources */,
 				E3C8A9F15B7D4E6C91A2B3D4 /* PlantPlanner.swift in Sources */,
+				A10000000000000000000001 /* WateringSchedule.swift in Sources */,
+				A10000000000000000000002 /* WateringAppIntents.swift in Sources */,
+				A10000000000000000000003 /* WateringCalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

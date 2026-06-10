@@ -1,3 +1,4 @@
+import AppIntents
 import SwiftUI
 
 private enum LayoutMode: String, CaseIterable, Identifiable {
@@ -9,6 +10,9 @@ private enum LayoutMode: String, CaseIterable, Identifiable {
 }
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    @StateObject private var wateringStore = WateringScheduleStore.shared
     @State private var plants = PlantCatalog.load()
     @State private var searchText = ""
     @State private var layoutMode = LayoutMode.grid
@@ -18,7 +22,10 @@ struct ContentView: View {
     @State private var selectedTraits = Set<String>()
     @State private var collapsedSections = Set<String>()
     @State private var showsLegend = false
-    @State private var showsPlanner = false
+    @State private var showsPlannerInDetail = true
+    @State private var showsPlannerSheet = false
+    @State private var showsWateringCalendar = false
+    @State private var wateringFocusPlantID: String?
     @State private var showsFilters = false
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     @State private var preferredCompactColumn = NavigationSplitViewColumn.sidebar
@@ -63,6 +70,10 @@ struct ContentView: View {
         selectedSections.count + selectedDifficulties.count + selectedBloomTimes.count + selectedTraits.count
     }
 
+    private var usesPlannerDetail: Bool {
+        horizontalSizeClass != .compact
+    }
+
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility, preferredCompactColumn: $preferredCompactColumn) {
             catalogColumn
@@ -73,6 +84,34 @@ struct ContentView: View {
         .navigationSplitViewStyle(.balanced)
         .sheet(isPresented: $showsLegend) {
             LegendView()
+        }
+        .sheet(isPresented: $showsPlannerSheet) {
+            PlantPlannerView(plants: plants) {
+                showsPlannerSheet = false
+            }
+        }
+        .sheet(isPresented: $showsWateringCalendar) {
+            WateringCalendarView(
+                plants: plants,
+                store: wateringStore,
+                focusPlantID: wateringFocusPlantID
+            )
+        }
+        .onChange(of: usesPlannerDetail) { _, usesDetail in
+            if usesDetail {
+                showsPlannerSheet = false
+                columnVisibility = .all
+            }
+        }
+        .onReceive(wateringStore.$presentationRequest.compactMap { $0 }) { request in
+            switch request {
+            case .calendar:
+                wateringFocusPlantID = nil
+            case .plant(let plantID):
+                wateringFocusPlantID = plantID
+            }
+            showsWateringCalendar = true
+            wateringStore.clearPresentationRequest()
         }
     }
 
@@ -140,6 +179,14 @@ struct ContentView: View {
                     .accessibilityLabel("Open plant planner")
 
                     Button {
+                        wateringFocusPlantID = nil
+                        showsWateringCalendar = true
+                    } label: {
+                        Image(systemName: "drop.fill")
+                    }
+                    .accessibilityLabel("Open watering calendar")
+
+                    Button {
                         showsLegend = true
                     } label: {
                         Image(systemName: "info.circle")
@@ -164,9 +211,9 @@ struct ContentView: View {
 
     @ViewBuilder
     private var plannerDetail: some View {
-        if showsPlanner {
+        if usesPlannerDetail, showsPlannerInDetail {
             PlantPlannerView(plants: plants) {
-                showsPlanner = false
+                showsPlannerInDetail = false
                 preferredCompactColumn = .sidebar
             }
         } else {
@@ -175,9 +222,15 @@ struct ContentView: View {
     }
 
     private func openPlanner() {
-        showsPlanner = true
-        columnVisibility = .all
-        preferredCompactColumn = .detail
+        if usesPlannerDetail {
+            showsPlannerInDetail = true
+            showsPlannerSheet = false
+            columnVisibility = .all
+            preferredCompactColumn = .detail
+        } else {
+            showsPlannerSheet = true
+            preferredCompactColumn = .sidebar
+        }
     }
 
     private func collapsedBinding(for section: String) -> Binding<Bool> {
@@ -572,6 +625,8 @@ private struct PlantDetailView: View {
                 Text(plant.notes)
                     .font(.body)
 
+                PlantWateringPanel(plant: plant, store: WateringScheduleStore.shared)
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Plant Cues")
                         .font(.headline)
@@ -599,6 +654,11 @@ private struct PlantDetailView: View {
         .background(Color(.systemGroupedBackground))
         .navigationTitle(plant.name)
         .navigationBarTitleDisplayMode(.inline)
+        .userActivity("dev.ryleyherrington.NativePlants.viewPlant") { activity in
+            if #available(iOS 18.2, *) {
+                activity.appEntityIdentifier = EntityIdentifier(for: PlantEntity.self, identifier: plant.id)
+            }
+        }
     }
 }
 

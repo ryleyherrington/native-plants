@@ -440,6 +440,10 @@ private struct PlannerMessageBubble: View {
         message.role == .user
     }
 
+    private var bubbleBackground: Color {
+        isUser ? Color(red: 0.08, green: 0.31, blue: 0.18) : Color(.secondarySystemGroupedBackground)
+    }
+
     var body: some View {
         HStack {
             if isUser {
@@ -470,7 +474,7 @@ private struct PlannerMessageBubble: View {
             }
             .padding(12)
             .frame(maxWidth: 620, alignment: isUser ? .trailing : .leading)
-            .background(isUser ? Color.green : Color(.secondarySystemGroupedBackground))
+            .background(bubbleBackground)
             .clipShape(RoundedRectangle(cornerRadius: 8))
 
             if !isUser {
