@@ -402,29 +402,8 @@ private struct PlantSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Button {
-                isCollapsed.toggle()
-            } label: {
-                HStack(alignment: .firstTextBaseline) {
-                    Text(section)
-                        .font(.title3.bold())
-                        .foregroundStyle(.primary)
-                    Text("\(plants.count)")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-
-                    Spacer(minLength: 0)
-
-                    Image(systemName: isCollapsed ? "chevron.down" : "chevron.up")
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .frame(width: 32, height: 32)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(isCollapsed ? "Expand \(section)" : "Collapse \(section)")
+            sectionHeader
+                .zIndex(1)
 
             if !isCollapsed {
                 if layoutMode == .grid {
@@ -450,6 +429,35 @@ private struct PlantSection: View {
                 }
             }
         }
+    }
+
+    private var sectionHeader: some View {
+        Button {
+            isCollapsed.toggle()
+        } label: {
+            HStack(alignment: .center, spacing: 8) {
+                Text(section)
+                    .font(.title3.bold())
+                    .foregroundStyle(.primary)
+
+                Text("\(plants.count)")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+
+                Spacer(minLength: 0)
+
+                Image(systemName: isCollapsed ? "chevron.right" : "chevron.down")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 36, height: 36)
+            }
+            .padding(.vertical, 2)
+            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(isCollapsed ? "Expand \(section)" : "Collapse \(section)")
+        .accessibilityValue(isCollapsed ? "Collapsed" : "Expanded")
     }
 }
 

@@ -4,15 +4,24 @@ Native Plants is a SwiftUI iOS app for exploring a curated catalog of Oregon nat
 
 ## Screenshots
 
-| Home and AI planner | Catalog filters |
-| --- | --- |
-| ![Native Plants home page with an AI plant planner conversation](Homepage+AI.PNG) | ![Native Plants filter sheet showing section, ease, bloom, and trait filters](native-plants-filters.PNG) |
+### iPad
+
+| Home and AI planner | Catalog filters | Watering schedule |
+| --- | --- | --- |
+| <img src="Homepage+AI.PNG" alt="Native Plants iPad home page with an AI plant planner conversation" width="320"> | <img src="native-plants-filters.PNG" alt="Native Plants iPad filter sheet showing section, ease, bloom, and trait filters" width="320"> | <img src="Watering-schedule.png" alt="Native Plants iPad watering schedule showing due and upcoming plant watering tasks" width="320"> |
+
+### iPhone
+
+| Grid catalog | List catalog | Filters | AI planner |
+| --- | --- | --- | --- |
+| <img src="iphone-grid.png" alt="Native Plants iPhone catalog in grid view" width="180"> | <img src="iphone-list.png" alt="Native Plants iPhone catalog in list view" width="180"> | <img src="iphone-filter.png" alt="Native Plants iPhone filter sheet" width="180"> | <img src="iphone-ai-type.png" alt="Native Plants iPhone AI planner composer with a typed request" width="180"> |
 
 ## What the App Does
 
 - Browses Oregon native plants grouped by catalog section, with search across names, bloom cues, notes, and traits.
 - Filters plants by section, ease, bloom season, and trait chips, then shows an active filter count in the toolbar.
 - Offers grid and list browsing modes, plant detail pages, image-backed cards, bloom summaries, care difficulty badges, and a plant icon key.
+- Adapts between a focused iPhone catalog flow and an iPad split-view layout that can keep the catalog and planner visible together.
 - Includes a Plant Planner conversation view that can recommend plants for a described site, such as a shady corner, dry strip, small bed, or wildlife-friendly planting.
 - Supports optional yard photo attachments in the planner as context for the conversation.
 - Tracks watering schedules with suggested cadence, due and upcoming lists, mark-watered actions, notes, and recurring next-water calculations.
