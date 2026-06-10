@@ -135,7 +135,7 @@ struct PlantPlannerView: View {
                         }
                         .padding()
                     }
-                    .background(Color(.systemGroupedBackground))
+                    .plantAtmosphereBackground()
                     .onChange(of: messages.count) { _, _ in
                         scrollToBottom(proxy)
                     }

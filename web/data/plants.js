@@ -1,0 +1,2556 @@
+window.NATIVE_PLANTS_DATA = [
+  {
+    "id": "grand-fir",
+    "name": "Grand fir",
+    "scientificName": "Abies grandis",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "240 feet tall, 40 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Conifer; blue-green needles have fragrant tangerine smell; great for wind break; prefers well-drained soil",
+    "sourcePage": 9,
+    "imageName": "grand-fir.png",
+    "iconStripName": "grand-fir-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "bigleaf-maple",
+    "name": "Bigleaf maple",
+    "scientificName": "Acer macrophyllum",
+    "section": "Large trees",
+    "habit": "Large deciduous tree",
+    "size": "100 feet tall, 80 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers in early spring; large leaves are up to 10-inches wide",
+    "sourcePage": 9,
+    "imageName": "bigleaf-maple.png",
+    "iconStripName": "bigleaf-maple-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree"
+    ]
+  },
+  {
+    "id": "red-alder",
+    "name": "Red alder",
+    "scientificName": "Alnus rubra",
+    "section": "Large trees",
+    "habit": "Large deciduous tree",
+    "size": "80 feet tall, 30-40 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Brownish catkins in early spring; tolerates seasonally-flooded soil",
+    "sourcePage": 9,
+    "imageName": "red-alder.png",
+    "iconStripName": "red-alder-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree"
+    ]
+  },
+  {
+    "id": "pacific-madrone",
+    "name": "Pacific madrone",
+    "scientificName": "Arbutus menziesii",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "100 feet tall, 40 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Cream flowers mid to late spring; berries for wildlife; red-brown bark; requires very well- drained soil",
+    "sourcePage": 10,
+    "imageName": "pacific-madrone.png",
+    "iconStripName": "pacific-madrone-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "incense-cedar",
+    "name": "Incense cedar",
+    "scientificName": "Calocedrus decurrens",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "100-160 feet tall, 30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Drought-tolerant, fragrant conifer; tolerates some shade; prefers well-drained soil",
+    "sourcePage": 10,
+    "imageName": "incense-cedar.png",
+    "iconStripName": "incense-cedar-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Well-drained soil",
+      "Drought tolerant"
+    ]
+  },
+  {
+    "id": "oregon-ash",
+    "name": "Oregon ash",
+    "scientificName": "Fraxinus latifolia",
+    "section": "Large trees",
+    "habit": "Large deciduous tree",
+    "size": "70 feet tall, 25 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Greenish flowers in spring on male and female trees; clusters of seed samaras in summer on female trees; great wetland and riparian tree",
+    "sourcePage": 10,
+    "imageName": "oregon-ash.png",
+    "iconStripName": "oregon-ash-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Wetland/riparian"
+    ]
+  },
+  {
+    "id": "sitka-spruce",
+    "name": "Sitka spruce",
+    "scientificName": "Picea sitchensis",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "125-230 feet tall, 30 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Conifer with short sharp needles; 3-inch cones; great for erosion control and wind breaks",
+    "sourcePage": 10,
+    "imageName": "sitka-spruce.png",
+    "iconStripName": "sitka-spruce-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Erosion control"
+    ]
+  },
+  {
+    "id": "shore-pine",
+    "name": "Shore pine",
+    "scientificName": "Pinus contorta var. contorta",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "20-50 feet tall, 30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Conifer; great for erosion control; very adaptable",
+    "sourcePage": 11,
+    "imageName": "shore-pine.png",
+    "iconStripName": "shore-pine-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Erosion control"
+    ]
+  },
+  {
+    "id": "ponderosa-pine",
+    "name": "Ponderosa pine",
+    "scientificName": "Pinus ponderosa var. benthamiana",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "150-200 feet tall, 25-30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Conifer; long needles grouped in threes; large cones; prefers well-drained soil; avoid variety from east of the Cascades",
+    "sourcePage": 11,
+    "imageName": "ponderosa-pine.png",
+    "iconStripName": "ponderosa-pine-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "quaking-aspen",
+    "name": "Quaking aspen",
+    "scientificName": "Populus tremuloides",
+    "section": "Large trees",
+    "habit": "Large deciduous tree",
+    "size": "50 feet tall, 20-25 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Green catkin flowers in spring on male trees; leaves appear to shake in wind; smooth bark; spreads by root runners",
+    "sourcePage": 11,
+    "imageName": "quaking-aspen.png",
+    "iconStripName": "quaking-aspen-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "douglas-fir",
+    "name": "Douglas fir",
+    "scientificName": "Pseudotsuga menziesii",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "300 feet tall, 30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Fairly fast-growing conifer; great for wind break",
+    "sourcePage": 11,
+    "imageName": "douglas-fir.png",
+    "iconStripName": "douglas-fir-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer"
+    ]
+  },
+  {
+    "id": "oregon-white-oak",
+    "name": "Oregon white oak",
+    "scientificName": "Quercus garryana",
+    "section": "Large trees",
+    "habit": "Large deciduous tree",
+    "size": "25-70 feet tall, 30-60 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Acorns appear in fall; great habitat tree for many species; slow growing; prefers well- drained soil",
+    "sourcePage": 12,
+    "imageName": "oregon-white-oak.png",
+    "iconStripName": "oregon-white-oak-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree"
+    ]
+  },
+  {
+    "id": "western-red-cedar",
+    "name": "Western red cedar",
+    "scientificName": "Thuja plicata",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "230 feet tall, 50 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Conifer; small, ½-inch cones; good for erosion control",
+    "sourcePage": 12,
+    "imageName": "western-red-cedar.png",
+    "iconStripName": "western-red-cedar-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Erosion control"
+    ]
+  },
+  {
+    "id": "western-hemlock",
+    "name": "Western hemlock",
+    "scientificName": "Tsuga heterophylla",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "120-200 feet tall, 30-40 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Fairly fast-growing conifer with short needles; 1-inch cones",
+    "sourcePage": 12,
+    "imageName": "western-hemlock.png",
+    "iconStripName": "western-hemlock-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer"
+    ]
+  },
+  {
+    "id": "mountain-hemlock",
+    "name": "Mountain hemlock",
+    "scientificName": "Tsuga mertensiana",
+    "section": "Large trees",
+    "habit": "Large evergreen tree",
+    "size": "60-120 feet tall, 15 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Slow-growing alpine conifer",
+    "sourcePage": 12,
+    "imageName": "mountain-hemlock.png",
+    "iconStripName": "mountain-hemlock-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer"
+    ]
+  },
+  {
+    "id": "vine-maple",
+    "name": "Vine maple",
+    "scientificName": "Acer circinatum",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "20-25 feet tall, 15-20 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Red and white flowers in spring; showy fall foliage",
+    "sourcePage": 13,
+    "imageName": "vine-maple.png",
+    "iconStripName": "vine-maple-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree"
+    ]
+  },
+  {
+    "id": "cascara",
+    "name": "Cascara",
+    "scientificName": "Frangula purshiana",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "30 feet tall, 20 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small, greenish-yellow flowers in spring; small black berries for wildlife; a.k.a. Rhamnus purshiana",
+    "sourcePage": 13,
+    "imageName": "cascara.png",
+    "iconStripName": "cascara-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "western-crabapple",
+    "name": "Western crabapple",
+    "scientificName": "Malus fusca",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "40 feet tall, 25 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "White fragrant flowers in spring; small yellow fruits for wildlife; orange fall foliage",
+    "sourcePage": 13,
+    "imageName": "western-crabapple.png",
+    "iconStripName": "western-crabapple-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "bitter-cherry",
+    "name": "Bitter cherry",
+    "scientificName": "Prunus emarginata",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "50 feet tall, 30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in spring; edible red fruit for wildlife",
+    "sourcePage": 14,
+    "imageName": "bitter-cherry.png",
+    "iconStripName": "bitter-cherry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Edible fruit",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "scoulers-willow",
+    "name": "Scouler’s willow",
+    "scientificName": "Salix scouleriana",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "40 feet tall, 40 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Fast growing; brown flower bracts in spring; male flowers great for pollinators; multi- stemmed",
+    "sourcePage": 14,
+    "imageName": "scoulers-willow.png",
+    "iconStripName": "scoulers-willow-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree"
+    ]
+  },
+  {
+    "id": "blue-elderberry",
+    "name": "Blue elderberry",
+    "scientificName": "Sambucus nigra ssp. cerulea",
+    "section": "Small trees",
+    "habit": "Small deciduous tree",
+    "size": "30 feet tall, 18 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flower clusters spring to summer; blue edible berries in September; a.k.a. Sambucus mexicana",
+    "sourcePage": 14,
+    "imageName": "blue-elderberry.png",
+    "iconStripName": "blue-elderberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Tree",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "pacific-yew",
+    "name": "Pacific yew",
+    "scientificName": "Taxus brevifolia",
+    "section": "Small trees",
+    "habit": "Small evergreen tree",
+    "size": "20-40 feet tall, 30 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Conifer; notable red-brown, scaly bark; red berries for wildlife",
+    "sourcePage": 14,
+    "imageName": "pacific-yew.png",
+    "iconStripName": "pacific-yew-icons.png",
+    "traits": [
+      "Evergreen",
+      "Tree",
+      "Conifer",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "serviceberry",
+    "name": "Serviceberry",
+    "scientificName": "Amelanchier alnifolia",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6-18 feet tall, 10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in spring; edible fruit; fall foliage color",
+    "sourcePage": 15,
+    "imageName": "serviceberry.png",
+    "iconStripName": "serviceberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "hairy-manzanita",
+    "name": "Hairy manzanita",
+    "scientificName": "Arctostaphylos columbiana",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "15 feet tall, 10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers in early summer; smooth reddish bark; requires well-drained soil",
+    "sourcePage": 15,
+    "imageName": "hairy-manzanita.png",
+    "iconStripName": "hairy-manzanita-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "coyote-brush",
+    "name": "Coyote brush",
+    "scientificName": "Baccharis pilularis",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "8 feet tall, 2-9 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Tiny white flowers late summer to early winter; deer resistant; male and female plants; prefers well-drained soil",
+    "sourcePage": 15,
+    "imageName": "coyote-brush.png",
+    "iconStripName": "coyote-brush-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "oregon-tea-tree",
+    "name": "Oregon tea tree",
+    "scientificName": "Ceanothus sanguineus",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "Large 8 feet tall, 3-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers late spring to mid summer; shrubs reddish stems and bark",
+    "sourcePage": 16,
+    "imageName": "oregon-tea-tree.png",
+    "iconStripName": "oregon-tea-tree-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "blue-blossom",
+    "name": "Blue blossom",
+    "scientificName": "Ceanothus thyrsiflorus",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "18 feet tall, 18 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Bright blue blossoms in spring and fall; shiny, dark-green leaves year-round; prefers well- drained soil",
+    "sourcePage": 16,
+    "imageName": "blue-blossom.png",
+    "iconStripName": "blue-blossom-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "snowbrush",
+    "name": "Snowbrush",
+    "scientificName": "Ceanothus velutinus var. laevigatus",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "8-10 feet tall, 12 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in summer; glossy, sticky leaves; sprawling form",
+    "sourcePage": 16,
+    "imageName": "snowbrush.png",
+    "iconStripName": "snowbrush-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "red-twig-dogwood",
+    "name": "Red twig dogwood",
+    "scientificName": "Cornus sericea",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "15 feet tall, 6-9 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in late spring; blue fruits; red fall color; showy red bark; spreads by rhizomes",
+    "sourcePage": 16,
+    "imageName": "red-twig-dogwood.png",
+    "iconStripName": "red-twig-dogwood-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "silk-tassel",
+    "name": "Silk tassel",
+    "scientificName": "Garrya eliptica",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "8-20 feet tall, 8-16 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Silvery catkins bloom December through spring; separate male and female plants",
+    "sourcePage": 17,
+    "imageName": "silk-tassel.png",
+    "iconStripName": "silk-tassel-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "oceanspray",
+    "name": "Oceanspray",
+    "scientificName": "Holodiscus discolor",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "15 feet tall, 12 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White to cream flowers late spring to late summer",
+    "sourcePage": 17,
+    "imageName": "oceanspray.png",
+    "iconStripName": "oceanspray-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "black-twinberry",
+    "name": "Black twinberry",
+    "scientificName": "Lonicera involucrata",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "8-10 feet tall, 4-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers spring to summer; smooth black berry inside red bracts",
+    "sourcePage": 17,
+    "imageName": "black-twinberry.png",
+    "iconStripName": "black-twinberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "tall-oregon-grape",
+    "name": "Tall Oregon grape",
+    "scientificName": "Mahonia aquifolium (Berberis aquifolium)",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "5-8 feet tall, 2-8 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers in early spring; edible (sour) fall fruit; spreads by rhizomes",
+    "sourcePage": 17,
+    "imageName": "tall-oregon-grape.png",
+    "iconStripName": "tall-oregon-grape-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Edible fruit",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "indian-plum",
+    "name": "Indian plum",
+    "scientificName": "Oemleria cerasiformis",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "15 feet tall, 5-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in early spring; plum-like fruit for wildlife; male and female plants",
+    "sourcePage": 18,
+    "imageName": "indian-plum.png",
+    "iconStripName": "indian-plum-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "lewis-mock-orange",
+    "name": "Lewis’ mock orange",
+    "scientificName": "Philadelphus lewisii",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6-10 feet tall, 4-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Fragrant white flowers late spring to mid- summer; prefers well-drained soil",
+    "sourcePage": 18,
+    "imageName": "lewis-mock-orange.png",
+    "iconStripName": "lewis-mock-orange-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "pacific-ninebark",
+    "name": "Pacific ninebark",
+    "scientificName": "Physocarpus capitatus",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "8-12 feet tall, 4-7 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Clusters of white flowers in late spring; red seed clusters; great for rain gardens",
+    "sourcePage": 18,
+    "imageName": "pacific-ninebark.png",
+    "iconStripName": "pacific-ninebark-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "pacific-rhododendron",
+    "name": "Pacific rhododendron",
+    "scientificName": "Rhododendron macrophyllum",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "10-25 feet tall, 5-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers May to June; prefers acidic, well- drained soils high in organic matter",
+    "sourcePage": 18,
+    "imageName": "pacific-rhododendron.png",
+    "iconStripName": "pacific-rhododendron-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "western-azalea",
+    "name": "Western azalea",
+    "scientificName": "Rhododendron occidentale",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "4-8 feet tall, 3-8 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White to pink flowers spring to early summer; fragrant",
+    "sourcePage": 19,
+    "imageName": "western-azalea.png",
+    "iconStripName": "western-azalea-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "golden-currant",
+    "name": "Golden currant",
+    "scientificName": "Ribes aureum",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "3-10 feet tall, 3-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow spring blooms; greenish to red leaves; fragrant",
+    "sourcePage": 19,
+    "imageName": "golden-currant.png",
+    "iconStripName": "golden-currant-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "red-flowering-currant",
+    "name": "Red-flowering currant",
+    "scientificName": "Ribes sanguineum var. sanguineum",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "4-10 feet tall, 3-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Red or pink flower clusters in early spring; berries for wildlife in fall; prefers well-drained soil",
+    "sourcePage": 19,
+    "imageName": "red-flowering-currant.png",
+    "iconStripName": "red-flowering-currant-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Well-drained soil",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "nootka-rose",
+    "name": "Nootka rose",
+    "scientificName": "Rosa nutkana var. nutkana",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6-10 feet tall, 3-4 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Large pink flowers spring to mid summer; large scarlet rosehips; pair of thorns at the base of each leaf; spreads by rhizomes",
+    "sourcePage": 19,
+    "imageName": "nootka-rose.png",
+    "iconStripName": "nootka-rose-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "swamp-rose",
+    "name": "Swamp rose",
+    "scientificName": "Rosa pisocarpa",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6 feet tall, 2-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Clustered pink blooms in early summer; small purple hips; thicket forming; spreads by rhizomes",
+    "sourcePage": 20,
+    "imageName": "swamp-rose.png",
+    "iconStripName": "swamp-rose-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "thimbleberry",
+    "name": "Thimbleberry",
+    "scientificName": "Rubus parviflorus",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "4-6 feet tall, 3-6 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers spring to summer; edible, ras p be r ry-like fruit; thicket forming; spreads vigorously by rhizomes",
+    "sourcePage": 20,
+    "imageName": "thimbleberry.png",
+    "iconStripName": "thimbleberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "salmonberry",
+    "name": "Salmonberry",
+    "scientificName": "Rubus spectabilis",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "4-10 feet tall, 4-10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Magenta flowers spring to summer; edible, orange, raspberry-like fruit; thicket forming",
+    "sourcePage": 20,
+    "imageName": "salmonberry.png",
+    "iconStripName": "salmonberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "red-elderberry",
+    "name": "Red elderberry",
+    "scientificName": "Sambucus racemosa var. arborescens",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "8-20 feet tall, 6.5-20 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in spring; edible red fruit must be boiled for human consumption; a.k.a. Sambucus racemosa",
+    "sourcePage": 20,
+    "imageName": "red-elderberry.png",
+    "iconStripName": "red-elderberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "douglas-spirea",
+    "name": "Douglas spirea",
+    "scientificName": "Spiraea douglasii",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6 feet tall, 3-7 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Upright, pink flower plumes mid to late summer; spreads by rhizomes; good for rain gardens",
+    "sourcePage": 21,
+    "imageName": "douglas-spirea.png",
+    "iconStripName": "douglas-spirea-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "evergreen-huckleberry",
+    "name": "Evergreen huckleberry",
+    "scientificName": "Vaccinium ovatum",
+    "section": "Large shrubs",
+    "habit": "Large evergreen shrub",
+    "size": "4-8 feet tall, 3-6 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Light pink flowers spring to summer; edible fruit for people and wildlife; great foliage plant; slow-growing; prefers well-drained soil",
+    "sourcePage": 21,
+    "imageName": "evergreen-huckleberry.png",
+    "iconStripName": "evergreen-huckleberry-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Well-drained soil",
+      "Edible fruit",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "red-huckleberry",
+    "name": "Red huckleberry",
+    "scientificName": "Vaccinium parvifolium",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "8-10 feet tall, 6 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Creamy bell flowers spring to summer; delicate foliage; edible red berries for wildlife; prefers soil high in compost",
+    "sourcePage": 21,
+    "imageName": "red-huckleberry.png",
+    "iconStripName": "red-huckleberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "western-viburnum",
+    "name": "Western viburnum",
+    "scientificName": "Viburnum ellipticum",
+    "section": "Large shrubs",
+    "habit": "Large deciduous shrub",
+    "size": "6-10 feet tall, 5-8 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Clusters of small, white flowers in early summer; berries in fall for wildlife; red fall color",
+    "sourcePage": 21,
+    "imageName": "western-viburnum.png",
+    "iconStripName": "western-viburnum-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "kinnikinnick",
+    "name": "Kinnikinnick",
+    "scientificName": "Arctostaphylos uva-ursi",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "5-8 inches tall, 2-15 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; pink flowers in spring; edible red berries for wildlife; prefers well-drained soil",
+    "sourcePage": 22,
+    "imageName": "kinnikinnick.png",
+    "iconStripName": "kinnikinnick-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Groundcover",
+      "Well-drained soil",
+      "Edible fruit",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "oregon-wintergreen",
+    "name": "Oregon wintergreen",
+    "scientificName": "Gaultheria ovatifolia",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "3 inches tall, 1-3 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Pink bell-shaped flowers in summer; edible fruit for wildlife; good for rain gardens",
+    "sourcePage": 22,
+    "imageName": "oregon-wintergreen.png",
+    "iconStripName": "oregon-wintergreen-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Rain garden",
+      "Edible fruit",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "salal",
+    "name": "Salal",
+    "scientificName": "Gaultheria shallon",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "1-5 feet tall, 1-5 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers spring to summer; edible berries in fall; spreads by rhizomes",
+    "sourcePage": 22,
+    "imageName": "salal.png",
+    "iconStripName": "salal-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Edible fruit",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "western-twinflower",
+    "name": "Western twinflower",
+    "scientificName": "Linnaea borealis ssp. longiflora",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "6 inches tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Trailing groundcover; bell-shaped, paired, pink flowers in summer",
+    "sourcePage": 23,
+    "imageName": "western-twinflower.png",
+    "iconStripName": "western-twinflower-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "pink-honeysuckle",
+    "name": "Pink honeysuckle",
+    "scientificName": "Lonicera hispidula var. hispidula",
+    "section": "Small and medium shrubs",
+    "habit": "Deciduous vine",
+    "size": "12 feet tall, 10 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers in summer",
+    "sourcePage": 23,
+    "imageName": "pink-honeysuckle.png",
+    "iconStripName": "pink-honeysuckle-icons.png",
+    "traits": [
+      "Deciduous",
+      "Vine"
+    ]
+  },
+  {
+    "id": "cascade-oregon-grape",
+    "name": "Cascade Oregon grape",
+    "scientificName": "() Mahonia nervosa Berberis nervosa",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "2 feet tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers in early spring; fall fruit for wildlife",
+    "sourcePage": 23,
+    "imageName": "cascade-oregon-grape.png",
+    "iconStripName": "cascade-oregon-grape-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "oregon-boxwood",
+    "name": "Oregon boxwood",
+    "scientificName": "Paxistima myrsinites",
+    "section": "Small and medium shrubs",
+    "habit": "Small evergreen shrub",
+    "size": "3 feet tall, 3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small, fragrant, maroon flowers spring to summer; glossy leaves; prefers well-drained soil",
+    "sourcePage": 23,
+    "imageName": "oregon-boxwood.png",
+    "iconStripName": "oregon-boxwood-icons.png",
+    "traits": [
+      "Evergreen",
+      "Shrub",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "gummy-gooseberry",
+    "name": "Gummy gooseberry",
+    "scientificName": "Ribes lobbii",
+    "section": "Small and medium shrubs",
+    "habit": "Small deciduous shrub",
+    "size": "4 feet tall, 4 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Reddish, fuchsia-like flowers in late spring; sticky, green berries for wildlife",
+    "sourcePage": 24,
+    "imageName": "gummy-gooseberry.png",
+    "iconStripName": "gummy-gooseberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Wildlife value"
+    ]
+  },
+  {
+    "id": "baldhip-rose",
+    "name": "Baldhip rose",
+    "scientificName": "Rosa gymnocarpa",
+    "section": "Small and medium shrubs",
+    "habit": "Small deciduous shrub",
+    "size": "5 feet tall, 2-8 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink, fragrant flowers in late spring; small scarlet rosehips; spreads by rhizomes",
+    "sourcePage": 24,
+    "imageName": "baldhip-rose.png",
+    "iconStripName": "baldhip-rose-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "birch-leaved-spirea",
+    "name": "Birch-leaved spirea",
+    "scientificName": "Spiraea betulifolia var. lucida",
+    "section": "Small and medium shrubs",
+    "habit": "Small deciduous shrub",
+    "size": "3 feet tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Dark-green, shiny leaves; flat white flowers in summer; very adaptable",
+    "sourcePage": 24,
+    "imageName": "birch-leaved-spirea.png",
+    "iconStripName": "birch-leaved-spirea-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub"
+    ]
+  },
+  {
+    "id": "common-snowberry",
+    "name": "Common snowberry",
+    "scientificName": "Symphoricarpos albus",
+    "section": "Small and medium shrubs",
+    "habit": "Small deciduous shrub",
+    "size": "3-6 feet tall, 6-13 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers spring to summer; inedible white berries in fall and winter; spreads by rhizomes",
+    "sourcePage": 24,
+    "imageName": "common-snowberry.png",
+    "iconStripName": "common-snowberry-icons.png",
+    "traits": [
+      "Deciduous",
+      "Shrub",
+      "Edible fruit",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "yarrow",
+    "name": "Yarrow",
+    "scientificName": "Achillea millefolium",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-2 feet tall, 24 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers spring to fall; can spread vigorously by rhizomes and seed",
+    "sourcePage": 25,
+    "imageName": "yarrow.png",
+    "iconStripName": "yarrow-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "vanilla-leaf",
+    "name": "Vanilla leaf",
+    "scientificName": "Achlys triphylla",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "8-16 inches tall, 1 foot wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "White flower spike atop large flat leaf spring to summer; fragrant dried leaves",
+    "sourcePage": 25,
+    "imageName": "vanilla-leaf.png",
+    "iconStripName": "vanilla-leaf-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "northern-maidenhair-fern",
+    "name": "Northern maidenhair fern",
+    "scientificName": "Adiantum aleuticum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Deciduous fern",
+    "size": "10-30 inches tall, 12-30 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Delicate foliage on black stems; grows best in wet soil",
+    "sourcePage": 25,
+    "imageName": "northern-maidenhair-fern.png",
+    "iconStripName": "northern-maidenhair-fern-icons.png",
+    "traits": [
+      "Deciduous",
+      "Fern"
+    ]
+  },
+  {
+    "id": "nodding-onion",
+    "name": "Nodding onion",
+    "scientificName": "Allium cernuum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6-20 inches tall, 12-18 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers in summer; great for rock gardens; prefers well-drained soil",
+    "sourcePage": 26,
+    "imageName": "nodding-onion.png",
+    "iconStripName": "nodding-onion-icons.png",
+    "traits": [
+      "Perennial",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "pearly-everlasting",
+    "name": "Pearly everlasting",
+    "scientificName": "Anaphalis margaritacea",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-3 feet tall, 18-24 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers summer to fall; silver-gray foliage; tolerates full sun; spreads by rhizomes and seed",
+    "sourcePage": 26,
+    "imageName": "pearly-everlasting.png",
+    "iconStripName": "pearly-everlasting-icons.png",
+    "traits": [
+      "Perennial",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "columbian-windflower",
+    "name": "Columbian windflower",
+    "scientificName": "Anemone deltoidea",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "10 inches tall, 8-10 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "White flowers in late spring to summer",
+    "sourcePage": 26,
+    "imageName": "columbian-windflower.png",
+    "iconStripName": "columbian-windflower-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "red-columbine",
+    "name": "Red columbine",
+    "scientificName": "Aquilegia formosa",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Red to orange flowers spring to summer; great for rain gardens; self-seeds; prefers well-drained soil",
+    "sourcePage": 26,
+    "imageName": "red-columbine.png",
+    "iconStripName": "red-columbine-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "sea-pink",
+    "name": "Sea pink",
+    "scientificName": "Armeria maritima",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "6-10 inches tall, 8-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Lavender to pink flowers spring to early summer; good rock garden plant; prefers well- drained soil",
+    "sourcePage": 27,
+    "imageName": "sea-pink.png",
+    "iconStripName": "sea-pink-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Rock garden"
+    ]
+  },
+  {
+    "id": "wild-ginger",
+    "name": "Wild ginger",
+    "scientificName": "Asarum caudatum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "6 inches tall, 3 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Groundcover; unique maroon flowers hidden under heart-shaped, glossy leaves in spring; edible roots",
+    "sourcePage": 27,
+    "imageName": "wild-ginger.png",
+    "iconStripName": "wild-ginger-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "showy-milkweed",
+    "name": "Showy milkweed",
+    "scientificName": "Asclepias speciosa",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Fragrant pink flowers in summer; Monarch butterfly host plant; spreads by seed; prefers well-drained soil",
+    "sourcePage": 27,
+    "imageName": "showy-milkweed.png",
+    "iconStripName": "showy-milkweed-icons.png",
+    "traits": [
+      "Perennial",
+      "Well-drained soil",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "maidenhair-spleenwort",
+    "name": "Maidenhair spleenwort",
+    "scientificName": "Asplenium trichomanes",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen fern",
+    "size": "6-12 inches tall, 30 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Notable black stems; great for shady rock gardens",
+    "sourcePage": 27,
+    "imageName": "maidenhair-spleenwort.png",
+    "iconStripName": "maidenhair-spleenwort-icons.png",
+    "traits": [
+      "Evergreen",
+      "Fern",
+      "Rock garden"
+    ]
+  },
+  {
+    "id": "lady-fern",
+    "name": "Lady fern",
+    "scientificName": "Athyrium filix-femina",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Deciduous fern",
+    "size": "4 feet tall, 24 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Large delicate leaves; great for shady rain gardens",
+    "sourcePage": 28,
+    "imageName": "lady-fern.png",
+    "iconStripName": "lady-fern-icons.png",
+    "traits": [
+      "Deciduous",
+      "Fern",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "deer-fern",
+    "name": "Deer fern",
+    "scientificName": "Blechnum spicant",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen fern",
+    "size": "1-3 feet tall, 2 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Great for shady rain gardens; a.k.a. Struthiopteris spicant",
+    "sourcePage": 28,
+    "imageName": "deer-fern.png",
+    "iconStripName": "deer-fern-icons.png",
+    "traits": [
+      "Evergreen",
+      "Fern",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "large-boykinia",
+    "name": "Large boykinia",
+    "scientificName": "Boykinia major",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in summer; great for woodland gardens; spreads vigorously by rhizomes",
+    "sourcePage": 28,
+    "imageName": "large-boykinia.png",
+    "iconStripName": "large-boykinia-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "common-camas",
+    "name": "Common camas",
+    "scientificName": "Camassia quamash",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "30 inches tall, 6-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers in spring; great for rain gardens; needs dry summer soil",
+    "sourcePage": 28,
+    "imageName": "common-camas.png",
+    "iconStripName": "common-camas-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "common-harebell",
+    "name": "Common harebell",
+    "scientificName": "Campanula rotundifolia",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1 foot tall, 16 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Thin, papery, bell-like blue flowers early summer to early fall; good groundcover",
+    "sourcePage": 29,
+    "imageName": "common-harebell.png",
+    "iconStripName": "common-harebell-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "fireweed",
+    "name": "Fireweed",
+    "scientificName": "Chamaenerion angustifolium",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink spiked flowers in summer; grows after burns; spreads vigorously by seed; a.k.a. Chamerion angustifolium and Epilobium angustifolium",
+    "sourcePage": 29,
+    "imageName": "fireweed.png",
+    "iconStripName": "fireweed-icons.png",
+    "traits": [
+      "Perennial",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "enchanters-nightshade",
+    "name": "Enchanter’s nightshade",
+    "scientificName": "ssp. Circaea alpina pacifica",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-10 inches tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small white-pink flowers atop stalks; good riparian plant; spreads by seed, but is easy to pull",
+    "sourcePage": 29,
+    "imageName": "enchanters-nightshade.png",
+    "iconStripName": "enchanters-nightshade-icons.png",
+    "traits": [
+      "Perennial",
+      "Wetland/riparian",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "farewell-to-spring",
+    "name": "Farewell-to-spring",
+    "scientificName": "Clarkia amoena",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Annual",
+    "size": "2 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Bright pink flowers with red spots in early summer; prefers well-drained soil; great for rock garden",
+    "sourcePage": 29,
+    "imageName": "farewell-to-spring.png",
+    "iconStripName": "farewell-to-spring-icons.png",
+    "traits": [
+      "Annual",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "small-blue-eyed-mary",
+    "name": "Small blue-eyed Mary",
+    "scientificName": "Collinsia parviflora",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Annual",
+    "size": "2-16 inches tall, 2-3 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; showy white-blue flowers in mid- late spring",
+    "sourcePage": 30,
+    "imageName": "small-blue-eyed-mary.png",
+    "iconStripName": "small-blue-eyed-mary-icons.png",
+    "traits": [
+      "Annual",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "bunchberry",
+    "name": "Bunchberry",
+    "scientificName": "Cornus unalaschkensis",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "4-8 inches tall, 6-12 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Greenish-white flowers in late spring; red berries; needs acidic, organic soil; a.k.a. Cornus canadensis",
+    "sourcePage": 30,
+    "imageName": "bunchberry.png",
+    "iconStripName": "bunchberry-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial"
+    ]
+  },
+  {
+    "id": "scoulers-corydalis",
+    "name": "Scouler’s corydalis",
+    "scientificName": "Corydalis scouleri",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4 feet tall, 3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink blooms in late spring; prefers highly organic soil",
+    "sourcePage": 30,
+    "imageName": "scoulers-corydalis.png",
+    "iconStripName": "scoulers-corydalis-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "tufted-hairgrass",
+    "name": "Tufted hairgrass",
+    "scientificName": "Deschampsia cespitosa",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial grass",
+    "size": "2-3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Densely-tufted grass with bronze spikelets; good wetland plant",
+    "sourcePage": 30,
+    "imageName": "tufted-hairgrass.png",
+    "iconStripName": "tufted-hairgrass-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Wetland/riparian"
+    ]
+  },
+  {
+    "id": "pacific-bleeding-heart",
+    "name": "Pacific bleeding heart",
+    "scientificName": "Dicentra formosa ssp. formosa",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "12-18 inches tall, 18-24 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers spring to summer; spreads by seed",
+    "sourcePage": 31,
+    "imageName": "pacific-bleeding-heart.png",
+    "iconStripName": "pacific-bleeding-heart-icons.png",
+    "traits": [
+      "Perennial",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "cluster-lily",
+    "name": "Cluster lily",
+    "scientificName": "Dichelostemma congestum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-3 feet tall, 6 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pale lavender flower clusters in spring; prefers well-drained soil",
+    "sourcePage": 31,
+    "imageName": "cluster-lily.png",
+    "iconStripName": "cluster-lily-icons.png",
+    "traits": [
+      "Perennial",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "hendersons-shooting-star",
+    "name": "Henderson’s shooting star",
+    "scientificName": "Dodecatheon hendersonii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1 foot tall, 6 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers spring to summer; great for rock gardens; prefers well-drained soil",
+    "sourcePage": 31,
+    "imageName": "hendersons-shooting-star.png",
+    "iconStripName": "hendersons-shooting-star-icons.png",
+    "traits": [
+      "Perennial",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "blue-wildrye",
+    "name": "Blue wildrye",
+    "scientificName": "Elymus glaucus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial grass",
+    "size": "4 feet tall, 1.5-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Bunchgrass; thin, flat blades with erect flower spike; good riparian plant",
+    "sourcePage": 31,
+    "imageName": "blue-wildrye.png",
+    "iconStripName": "blue-wildrye-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Wetland/riparian"
+    ]
+  },
+  {
+    "id": "seaside-daisy",
+    "name": "Seaside daisy",
+    "scientificName": "Erigeron glaucus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "1-2 feet tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Showy light-purple and yellow flowers spring to fall; nice groundcover; spreads by rhizomes",
+    "sourcePage": 32,
+    "imageName": "seaside-daisy.png",
+    "iconStripName": "seaside-daisy-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "showy-fleabane",
+    "name": "Showy fleabane",
+    "scientificName": "Erigeron speciosus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6-30 inches tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers all summer",
+    "sourcePage": 32,
+    "imageName": "showy-fleabane.png",
+    "iconStripName": "showy-fleabane-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "oregon-sunshine",
+    "name": "Oregon sunshine",
+    "scientificName": "Eriophyllum lanatum var. leucophyllum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6-24 inches tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers spring to summer; prefers well- drained soil; reseeds easily",
+    "sourcePage": 32,
+    "imageName": "oregon-sunshine.png",
+    "iconStripName": "oregon-sunshine-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "yellow-monkey-flower",
+    "name": "Yellow monkey flower",
+    "scientificName": "Erythranthe guttata",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6 -24 inches tall, 1-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers spring to summer; great for rain gardens; spreads vigorously by seed; a.k.a. Mimulus guttatus",
+    "sourcePage": 32,
+    "imageName": "yellow-monkey-flower.png",
+    "iconStripName": "yellow-monkey-flower-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "white-fawn-lily",
+    "name": "White fawn lily",
+    "scientificName": "Erythronium oregonum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1 foot tall, 6-8 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Showy white nodding flowers in spring; great for woodland gardens; prefers well-drained soil",
+    "sourcePage": 33,
+    "imageName": "white-fawn-lily.png",
+    "iconStripName": "white-fawn-lily-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "california-fescue",
+    "name": "California fescue",
+    "scientificName": "Festuca californica",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial grass",
+    "size": "2-3 feet tall, 3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Blue-green clumping bunchgrass; tan flower stalks spring to summer; good for erosion control",
+    "sourcePage": 33,
+    "imageName": "california-fescue.png",
+    "iconStripName": "california-fescue-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Erosion control"
+    ]
+  },
+  {
+    "id": "coastal-strawberry",
+    "name": "Coastal strawberry",
+    "scientificName": "Fragaria chiloensis",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "4 inches tall, 3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers spring to summer; edible fruit for wildlife; spreads vigorously by runners, but is easy to remove; prefers well-drained soil",
+    "sourcePage": 33,
+    "imageName": "coastal-strawberry.png",
+    "iconStripName": "coastal-strawberry-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Well-drained soil",
+      "Edible fruit",
+      "Wildlife value",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "woodland-strawberry",
+    "name": "Woodland strawberry",
+    "scientificName": "Fragaria vesca ssp. bracteata",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6 inches tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers in late spring; good groundcover; edible fruit; spreads; prefers well-drained soil",
+    "sourcePage": 33,
+    "imageName": "woodland-strawberry.png",
+    "iconStripName": "woodland-strawberry-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover",
+      "Well-drained soil",
+      "Edible fruit",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "wild-strawberry",
+    "name": "Wild strawberry",
+    "scientificName": "ssp. Fragaria virginiana platypetala",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Semi-evergreen perennial",
+    "size": "3-5 inches tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; white flowers in late spring; edible fruit",
+    "sourcePage": 34,
+    "imageName": "wild-strawberry.png",
+    "iconStripName": "wild-strawberry-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "globe-gilia",
+    "name": "Globe gilia",
+    "scientificName": "Gilia capitata",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Annual",
+    "size": "1-3 feet tall, 8-10 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Blue, globe-like flowers in late spring",
+    "sourcePage": 34,
+    "imageName": "globe-gilia.png",
+    "iconStripName": "globe-gilia-icons.png",
+    "traits": [
+      "Annual"
+    ]
+  },
+  {
+    "id": "rattlesnake-plantain",
+    "name": "Rattlesnake plantain",
+    "scientificName": "Goodyera oblongifolia",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "6-18 inches tall, 8-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small white flowers in late summer; rattlesnake skin-like look on leaves; prefers well-drained soil",
+    "sourcePage": 34,
+    "imageName": "rattlesnake-plantain.png",
+    "iconStripName": "rattlesnake-plantain-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "western-oak-fern",
+    "name": "Western oak fern",
+    "scientificName": "Gymnocarpium disjunctum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Deciduous fern",
+    "size": "6-16 inches tall, 6 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; light green fronds; a.k.a. Gymnocarpium dryopteris",
+    "sourcePage": 34,
+    "imageName": "western-oak-fern.png",
+    "iconStripName": "western-oak-fern-icons.png",
+    "traits": [
+      "Deciduous",
+      "Fern",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "small-flowered-alumroot",
+    "name": "Small-flowered alumroot",
+    "scientificName": "Heuchera micrantha var. micrantha",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "1-2 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers spring to summer; great for rain gardens; prefers well-drained soil",
+    "sourcePage": 35,
+    "imageName": "small-flowered-alumroot.png",
+    "iconStripName": "small-flowered-alumroot-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Rain garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "pacific-waterleaf",
+    "name": "Pacific waterleaf",
+    "scientificName": "Hydrophyllum tenuipes",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "12-30 inches tall, 5 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; white flowers in spring; competes with English ivy; goes dormant without summer water",
+    "sourcePage": 35,
+    "imageName": "pacific-waterleaf.png",
+    "iconStripName": "pacific-waterleaf-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "oregon-iris",
+    "name": "Oregon iris",
+    "scientificName": "Iris tenax var. tenax",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "10-20 inches tall, 1-2 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Purple blooms in spring; great for rain gardens",
+    "sourcePage": 35,
+    "imageName": "oregon-iris.png",
+    "iconStripName": "oregon-iris-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "pacific-rush",
+    "name": "Pacific rush",
+    "scientificName": "Juncus effusus ssp. pacificus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "1-3 feet tall, 3-4 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Grasslike; inconspicuous brown flowers in summer; great for rain gardens; spreads by rhizomes",
+    "sourcePage": 35,
+    "imageName": "pacific-rush.png",
+    "iconStripName": "pacific-rush-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Grass",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "dagger-leaf-rush",
+    "name": "Dagger-leaf rush",
+    "scientificName": "Juncus ensifolius",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-2 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Iris-like leaves; great for rain gardens; spreads vigorously by rhizomes and seeds",
+    "sourcePage": 36,
+    "imageName": "dagger-leaf-rush.png",
+    "iconStripName": "dagger-leaf-rush-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "spreading-blue-rush",
+    "name": "Spreading blue rush",
+    "scientificName": "Juncus patens",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "1-2 feet tall, 1.5-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; clustered brown blooms in summer; good riparian plant",
+    "sourcePage": 36,
+    "imageName": "spreading-blue-rush.png",
+    "iconStripName": "spreading-blue-rush-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Wetland/riparian"
+    ]
+  },
+  {
+    "id": "prairie-junegrass",
+    "name": "Prairie junegrass",
+    "scientificName": "Koeleria macrantha",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial grass",
+    "size": "1-2 feet tall, 3-4 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Bluish-gray leaves; tiny yellow flowers in summer; silvery-spiked seed heads",
+    "sourcePage": 36,
+    "imageName": "prairie-junegrass.png",
+    "iconStripName": "prairie-junegrass-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass"
+    ]
+  },
+  {
+    "id": "tiger-lily",
+    "name": "Tiger lily",
+    "scientificName": "Lilium columbianum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "3-4 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Large, nodding, orange blooms with maroon spots in summer",
+    "sourcePage": 36,
+    "imageName": "tiger-lily.png",
+    "iconStripName": "tiger-lily-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "large-leaved-lupine",
+    "name": "Large-leaved lupine",
+    "scientificName": "Lupinus polyphyllus var. polyphyllus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4 feet tall, 2-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple-blue summer blossoms; great for rain gardens; spreads vigorously by seed, but is easy to pull",
+    "sourcePage": 37,
+    "imageName": "large-leaved-lupine.png",
+    "iconStripName": "large-leaved-lupine-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "riverbank-lupine",
+    "name": "Riverbank lupine",
+    "scientificName": "Lupinus rivularis",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers spring to summer; great for rain gardens; prefers well-drained soil; spreads vigorously by seed, but is easy to pull",
+    "sourcePage": 37,
+    "imageName": "riverbank-lupine.png",
+    "iconStripName": "riverbank-lupine-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Well-drained soil",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "western-starflower",
+    "name": "Western starflower",
+    "scientificName": "Lysimachia latifolia",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-8 inches tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; white-pink, star-like flowers in late spring; a.k.a. Trientalis latifolia",
+    "sourcePage": 37,
+    "imageName": "western-starflower.png",
+    "iconStripName": "western-starflower-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover"
+    ]
+  },
+  {
+    "id": "false-lily-of-the-valley",
+    "name": "False lily of the valley",
+    "scientificName": "Maianthemum dilatatum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1 foot tall, 2-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; white flowers spring to summer; spreads by rhizomes",
+    "sourcePage": 37,
+    "imageName": "false-lily-of-the-valley.png",
+    "iconStripName": "false-lily-of-the-valley-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "false-solomons-seal",
+    "name": "False Solomon’s seal",
+    "scientificName": "Maianthemum racemosum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-3 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Clusters of white flowers late spring; fragrant; a.k.a. Smilacina racemosa",
+    "sourcePage": 38,
+    "imageName": "false-solomons-seal.png",
+    "iconStripName": "false-solomons-seal-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "starry-false-solomons-seal",
+    "name": "Starry false Solomon’s seal",
+    "scientificName": "Maianthemum stellatum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-2 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers late spring; great for woodland gardens; a.k.a. Smilacina stellata",
+    "sourcePage": 38,
+    "imageName": "starry-false-solomons-seal.png",
+    "iconStripName": "starry-false-solomons-seal-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden"
+    ]
+  },
+  {
+    "id": "rusty-hair-saxifrage",
+    "name": "Rusty-hair saxifrage",
+    "scientificName": "Micranthes rufidula",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "10 inches tall, 6 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers spring to summer; great for rock gardens; prefers well-drained soil; a.k.a. Saxifraga occidentalis var. rufidula",
+    "sourcePage": 38,
+    "imageName": "rusty-hair-saxifrage.png",
+    "iconStripName": "rusty-hair-saxifrage-icons.png",
+    "traits": [
+      "Perennial",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "creeping-miterwort",
+    "name": "Creeping miterwort",
+    "scientificName": "Mitella caulescens",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "8-16 inches tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small, green blooms on stalks mid-spring to summer",
+    "sourcePage": 38,
+    "imageName": "creeping-miterwort.png",
+    "iconStripName": "creeping-miterwort-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "grasswidow",
+    "name": "Grasswidow",
+    "scientificName": "var. Olsynium douglasii douglasii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "6-16 inches tall, 1 foot wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Reddish-purple spring flowers on grass-like foliage; great for rain gardens; needs good drainage and dry soil in summer",
+    "sourcePage": 39,
+    "imageName": "grasswidow.png",
+    "iconStripName": "grasswidow-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "oregon-redwood-sorrel",
+    "name": "Oregon redwood sorrel",
+    "scientificName": "Oxalis oregana",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Semi-evergreen perennial",
+    "size": "8 inches tall, 2-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "White flowers with red veins spring to summer; great groundcover for dry shade; spreads by rhizomes",
+    "sourcePage": 39,
+    "imageName": "oregon-redwood-sorrel.png",
+    "iconStripName": "oregon-redwood-sorrel-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "cardwells-penstemon",
+    "name": "Cardwell’s penstemon",
+    "scientificName": "Penstemon cardwellii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "1 foot tall, 16 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Purple tubular flowers in summer; good for rock gardens; prefers well-drained soil",
+    "sourcePage": 39,
+    "imageName": "cardwells-penstemon.png",
+    "iconStripName": "cardwells-penstemon-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "richardsons-penstemon",
+    "name": "Richardson’s penstemon",
+    "scientificName": "Penstemon richardsonii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "12-34 inches tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Finely-dissected leaves; lavender flowers late spring to summer; great for rock gardens",
+    "sourcePage": 39,
+    "imageName": "richardsons-penstemon.png",
+    "iconStripName": "richardsons-penstemon-icons.png",
+    "traits": [
+      "Perennial",
+      "Rock garden"
+    ]
+  },
+  {
+    "id": "cascade-penstemon",
+    "name": "Cascade penstemon",
+    "scientificName": "Penstemon serrulatus",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Semi-evergreen perennial",
+    "size": "1-2 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers in summer; nice cut flowers; good for rain gardens",
+    "sourcePage": 40,
+    "imageName": "cascade-penstemon.png",
+    "iconStripName": "cascade-penstemon-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "spreading-phlox",
+    "name": "Spreading phlox",
+    "scientificName": "Phlox diffusa",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "4 inches tall, 12-18 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers in spring; great for rock gardens; prefers well-drained soil",
+    "sourcePage": 40,
+    "imageName": "spreading-phlox.png",
+    "iconStripName": "spreading-phlox-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "licorice-fern",
+    "name": "Licorice fern",
+    "scientificName": "Polypodium glycyrrhiza",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Semi-evergreen fern",
+    "size": "6-12 inches tall, 1 foot wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Edible roots taste like licorice; grows well with moss; grows on Bigleaf maple branches",
+    "sourcePage": 40,
+    "imageName": "licorice-fern.png",
+    "iconStripName": "licorice-fern-icons.png",
+    "traits": [
+      "Evergreen",
+      "Fern",
+      "Edible fruit"
+    ]
+  },
+  {
+    "id": "sword-fern",
+    "name": "Sword fern",
+    "scientificName": "Polystichum munitum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen fern",
+    "size": "2-5 feet tall, 2-4 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Beautiful leaves with a dramatic shape; thrives in most conditions",
+    "sourcePage": 40,
+    "imageName": "sword-fern.png",
+    "iconStripName": "sword-fern-icons.png",
+    "traits": [
+      "Evergreen",
+      "Fern"
+    ]
+  },
+  {
+    "id": "smiths-fairy-lantern",
+    "name": "Smith’s fairy lantern",
+    "scientificName": "Prosartes smithii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-3 feet tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "White, bell-shaped flowers in late spring; orange-red berries in fall",
+    "sourcePage": 41,
+    "imageName": "smiths-fairy-lantern.png",
+    "iconStripName": "smiths-fairy-lantern-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "western-coneflower",
+    "name": "Western coneflower",
+    "scientificName": "Rudbeckia occidentalis",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "2-6 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pale green/ purple-brown disk flowers",
+    "sourcePage": 41,
+    "imageName": "western-coneflower.png",
+    "iconStripName": "western-coneflower-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "oregon-stonecrop",
+    "name": "Oregon stonecrop",
+    "scientificName": "Sedum oreganum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "3-6 inches tall, 18 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers in summer; succulent-leaved groundcover; great for rock gardens; prefers well-drained soil",
+    "sourcePage": 41,
+    "imageName": "oregon-stonecrop.png",
+    "iconStripName": "oregon-stonecrop-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "broadleaf-stonecrop",
+    "name": "Broadleaf stonecrop",
+    "scientificName": "Sedum spathulifolium",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "2-8 inches tall, 18 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers spring to summer; succulent- leaved groundcover; great for rock gardens; prefers well-drained soil",
+    "sourcePage": 41,
+    "imageName": "broadleaf-stonecrop.png",
+    "iconStripName": "broadleaf-stonecrop-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Groundcover",
+      "Rock garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "meadow-checkerbloom",
+    "name": "Meadow checkerbloom",
+    "scientificName": "Sidalcea campestris",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "2-6 feet tall, 8-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Pink flowers in summer; prefers well-drained soil",
+    "sourcePage": 42,
+    "imageName": "meadow-checkerbloom.png",
+    "iconStripName": "meadow-checkerbloom-icons.png",
+    "traits": [
+      "Perennial",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "western-blue-eyed-grass",
+    "name": "Western blue-eyed grass",
+    "scientificName": "Sisyrinchium bellum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "8-12 inches tall, 6-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Blue blossoms spring to summer on grass-like foliage; great for rain gardens",
+    "sourcePage": 42,
+    "imageName": "western-blue-eyed-grass.png",
+    "iconStripName": "western-blue-eyed-grass-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Rain garden"
+    ]
+  },
+  {
+    "id": "golden-eyed-grass",
+    "name": "Golden-eyed grass",
+    "scientificName": "Sisyrinchium californicum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "8-20 inches tall, 6-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow summer flowers on grass-like foliage; great for rain gardens; spreads vigorously by rhizomes",
+    "sourcePage": 42,
+    "imageName": "golden-eyed-grass.png",
+    "iconStripName": "golden-eyed-grass-icons.png",
+    "traits": [
+      "Perennial",
+      "Grass",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "canada-goldenrod",
+    "name": "Canada goldenrod",
+    "scientificName": "Solidago elongata",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "2-5 feet tall, 2-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Clusters of yellow flowers summer to fall; spreads by seed; a.k.a. Solidago canadensis ssp. elongata",
+    "sourcePage": 42,
+    "imageName": "canada-goldenrod.png",
+    "iconStripName": "canada-goldenrod-icons.png",
+    "traits": [
+      "Perennial",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "douglas-aster",
+    "name": "Douglas’ aster",
+    "scientificName": "Symphyotrichum subspicatum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1-4 feet tall, 2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers summer to fall; great for rain gardens; spreads vigorously by rhizomes and seed; a.k.a. Aster subspicatus",
+    "sourcePage": 43,
+    "imageName": "douglas-aster.png",
+    "iconStripName": "douglas-aster-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "spring-queen",
+    "name": "Spring queen",
+    "scientificName": "Synthyris reniformis",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-6 inches tall, 6 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Purple flowers late winter to spring; great for woodland gardens; prefers well-drained soil",
+    "sourcePage": 43,
+    "imageName": "spring-queen.png",
+    "iconStripName": "spring-queen-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden",
+      "Well-drained soil"
+    ]
+  },
+  {
+    "id": "fringe-cup",
+    "name": "Fringe cup",
+    "scientificName": "Tellima grandiflora",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "12-30 inches tall, 1-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Creamy flowers on stalks in spring; spreads vigorously by seed",
+    "sourcePage": 43,
+    "imageName": "fringe-cup.png",
+    "iconStripName": "fringe-cup-icons.png",
+    "traits": [
+      "Perennial",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "western-meadow-rue",
+    "name": "Western meadow rue",
+    "scientificName": "Thalictrum occidentale",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "20-40 inches tall, 1-3 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Small pink and greenish flowers spring to summer; requires male and female plants if seed production desired",
+    "sourcePage": 43,
+    "imageName": "western-meadow-rue.png",
+    "iconStripName": "western-meadow-rue-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "piggyback-plant",
+    "name": "Piggyback plant",
+    "scientificName": "Tolmiea menziesii",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "12-30 inches tall, 1 foot wide",
+    "difficulty": "Easy to grow",
+    "notes": "Groundcover; maroon flowers spring to summer; spreads by seed",
+    "sourcePage": 44,
+    "imageName": "piggyback-plant.png",
+    "iconStripName": "piggyback-plant-icons.png",
+    "traits": [
+      "Perennial",
+      "Groundcover",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "sweet-trillium",
+    "name": "Sweet trillium",
+    "scientificName": "Trillium albidum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "1.5 feet tall, 1.5 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Large, 3-petaled, white flowers in spring",
+    "sourcePage": 44,
+    "imageName": "sweet-trillium.png",
+    "iconStripName": "sweet-trillium-icons.png",
+    "traits": [
+      "Perennial"
+    ]
+  },
+  {
+    "id": "western-trillium",
+    "name": "Western trillium",
+    "scientificName": "Trillium ovatum",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-18 inches tall, 6-24 inches wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "White flowers in spring; great for woodland gardens",
+    "sourcePage": 44,
+    "imageName": "western-trillium.png",
+    "iconStripName": "western-trillium-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden"
+    ]
+  },
+  {
+    "id": "common-cattail",
+    "name": "Common cattail",
+    "scientificName": "Typha latifolia",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "6 feet tall, 1-2 feet wide",
+    "difficulty": "Easy to grow",
+    "notes": "Brown, cigar-shaped bloom in summer; wetland plant",
+    "sourcePage": 44,
+    "imageName": "common-cattail.png",
+    "iconStripName": "common-cattail-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Wetland/riparian"
+    ]
+  },
+  {
+    "id": "inside-out-flower",
+    "name": "Inside-out flower",
+    "scientificName": "Vancouveria hexandra",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "8-16 inches tall, 12-24 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Slender white flowers mid to late spring; great for woodland gardens",
+    "sourcePage": 45,
+    "imageName": "inside-out-flower.png",
+    "iconStripName": "inside-out-flower-icons.png",
+    "traits": [
+      "Perennial",
+      "Woodland garden"
+    ]
+  },
+  {
+    "id": "early-blue-violet",
+    "name": "Early blue violet",
+    "scientificName": "Viola adunca",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-inches tall, 18-inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Purple flowers spring to summer; great for rain gardens; spreads by seed",
+    "sourcePage": 45,
+    "imageName": "early-blue-violet.png",
+    "iconStripName": "early-blue-violet-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "stream-violet",
+    "name": "Stream violet",
+    "scientificName": "Viola glabella",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Perennial",
+    "size": "4-9 inches, 6-12 inches wide",
+    "difficulty": "Easy to grow",
+    "notes": "Yellow flowers spring to summer; great for rain gardens; spreads by seed",
+    "sourcePage": 45,
+    "imageName": "stream-violet.png",
+    "iconStripName": "stream-violet-icons.png",
+    "traits": [
+      "Perennial",
+      "Rain garden",
+      "Spreads"
+    ]
+  },
+  {
+    "id": "beargrass",
+    "name": "Beargrass",
+    "scientificName": "Xerophyllum tenax",
+    "section": "Perennials, annuals and ferns",
+    "habit": "Evergreen perennial",
+    "size": "5 feet tall, 4 feet wide",
+    "difficulty": "Moderately hard to grow",
+    "notes": "Showy white flower on tall stalk late spring to late summer; grass-like leaves; fragrant; prefers well-drained soil",
+    "sourcePage": 45,
+    "imageName": "beargrass.png",
+    "iconStripName": "beargrass-icons.png",
+    "traits": [
+      "Evergreen",
+      "Perennial",
+      "Grass",
+      "Well-drained soil"
+    ]
+  }
+];

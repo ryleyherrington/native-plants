@@ -21,7 +21,7 @@ Native Plants is a SwiftUI iOS app for exploring a curated catalog of Oregon nat
 - Browses Oregon native plants grouped by catalog section, with search across names, bloom cues, notes, and traits.
 - Filters plants by section, ease, bloom season, and trait chips, then shows an active filter count in the toolbar.
 - Offers grid and list browsing modes, a pinned favorites section, plant detail pages, image-backed cards, bloom summaries, care difficulty badges, and a plant icon key.
-- Saves favorite plants from detail pages or catalog long-press menus, then lets people reorder the favorites shown at the top of the catalog.
+- Saves favorite plants from detail pages or catalog long-press menus, then lets people long-press and drag favorites into the order shown at the top of the catalog.
 - Adapts between a focused iPhone catalog flow and an iPad split-view layout that can keep the catalog and planner visible together.
 - Includes a Plant Planner conversation view that can recommend plants for a described site, such as a shady corner, dry strip, small bed, or wildlife-friendly planting.
 - Supports optional yard photo attachments in the planner as context for the conversation.
@@ -37,7 +37,7 @@ The app is built as a small showcase of recent iOS app integration points. SDK- 
 - **App Intents and Shortcuts**: Watering workflows are exposed through `AppIntent`, `AppEntity`, `EntityStringQuery`, `EnumerableEntityQuery`, and `AppShortcutsProvider`. Users can schedule plant watering, open the watering calendar, open watering details for a plant, and mark a plant watered from app shortcuts or Siri.
 - **Core Spotlight entity indexing**: Plants and watering schedules implement `IndexedEntity` and are indexed with `CSSearchableIndex.indexAppEntities`, making catalog and watering data discoverable through system search.
 - **NSUserActivity app entity linking**: Plant detail screens attach an app entity identifier to the current activity, helping the system understand which plant page is being viewed.
-- **SwiftUI reorderable favorites**: Favorite ordering is persisted locally and exposed through a reorder sheet that uses `DynamicViewContent.reorderable()` from the iOS 27 SwiftUI SDK.
+- **SwiftUI reorderable favorites**: Favorite ordering is persisted locally and the favorites section uses `DynamicViewContent.reorderable()` from the iOS 27 SwiftUI SDK for direct long-press drag reordering.
 - **SwiftUI navigation and presentation**: The main interface uses `NavigationSplitView`, `NavigationStack`, `.searchable`, sheets with detents, toolbar controls, and adaptive compact/regular layouts so the catalog and planner work across iPhone and iPad.
 
 ## Project Notes

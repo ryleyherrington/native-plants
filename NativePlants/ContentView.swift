@@ -9,6 +9,125 @@ private enum LayoutMode: String, CaseIterable, Identifiable {
     var icon: String { self == .grid ? "square.grid.2x2" : "list.bullet" }
 }
 
+enum PlantAtmosphereSettings {
+    static let enabledKey = "plantAtmosphereEnabled"
+}
+
+struct PlantAtmosphereBackground: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
+
+    let isEnabled: Bool
+
+    var body: some View {
+        Color(.systemGroupedBackground)
+            .overlay {
+                if isEnabled {
+                    bottomRightAtmosphere
+                        .allowsHitTesting(false)
+                }
+            }
+    }
+
+    private var bottomRightAtmosphere: some View {
+        GeometryReader { proxy in
+            let radius = max(proxy.size.width, proxy.size.height) * 0.88
+
+            breathingMesh
+                .frame(width: proxy.size.width * 1.22, height: proxy.size.height * 0.72)
+                .position(x: proxy.size.width * 0.78, y: proxy.size.height * 0.82)
+                .mask {
+                    RadialGradient(
+                        colors: [
+                            .black,
+                            .black.opacity(0.82),
+                            .black.opacity(0.38),
+                            .clear
+                        ],
+                        center: .bottomTrailing,
+                        startRadius: 56,
+                        endRadius: radius
+                    )
+                }
+        }
+    }
+
+    private var breathingMesh: some View {
+        TimelineView(.animation) { timeline in
+            let phase = reduceMotion ? 0 : timeline.date.timeIntervalSinceReferenceDate / 7.5
+
+            MeshGradient(
+                width: 3,
+                height: 3,
+                points: points(phase: phase),
+                colors: colors(phase: phase),
+                background: Color(red: 0.01, green: 0.02, blue: 0.01)
+            )
+            .blur(radius: 18)
+            .saturation(1.14)
+        }
+        .opacity(colorScheme == .dark ? 0.84 : 0.62)
+    }
+
+    private func points(phase: Double) -> [SIMD2<Float>] {
+        [
+            point(0, 0),
+            point(0.48 + wave(phase, speed: 0.9, amount: 0.04), 0.02 + wave(phase, speed: 0.7, amount: 0.015)),
+            point(1, 0),
+            point(0.02 + wave(phase, speed: 1.1, amount: 0.015), 0.46 + wave(phase, speed: 0.8, amount: 0.045)),
+            point(0.50 + wave(phase, speed: 1.2, amount: 0.07), 0.54 + wave(phase, speed: 1.0, amount: 0.06)),
+            point(0.98 + wave(phase, speed: 0.8, amount: 0.015), 0.48 + wave(phase, speed: 1.3, amount: 0.045)),
+            point(0, 1),
+            point(0.56 + wave(phase, speed: 0.95, amount: 0.055), 0.98 + wave(phase, speed: 1.1, amount: 0.015)),
+            point(1, 1)
+        ]
+    }
+
+    private func colors(phase: Double) -> [Color] {
+        let glow = (sin(phase) + 1) * 0.04
+
+        let fern = Color(red: 0.56 + glow, green: 0.76 + glow, blue: 0.35 + glow / 2)
+        let moss = Color(red: 0.10, green: 0.30 + glow, blue: 0.13)
+        let deepGreen = Color(red: 0.02, green: 0.13 + glow / 2, blue: 0.06)
+        let cedar = Color(red: 0.34 + glow / 2, green: 0.22, blue: 0.12)
+        let loam = Color(red: 0.20, green: 0.12, blue: 0.07)
+        let blackSoil = Color(red: 0.01, green: 0.015, blue: 0.01)
+
+        return [
+            blackSoil, blackSoil, blackSoil,
+            blackSoil, deepGreen, cedar,
+            moss, loam, fern
+        ]
+    }
+
+    private func point(_ x: Double, _ y: Double) -> SIMD2<Float> {
+        SIMD2<Float>(Float(x), Float(y))
+    }
+
+    private func wave(_ phase: Double, speed: Double, amount: Double) -> Double {
+        sin(phase * speed) * amount
+    }
+}
+
+private struct PlantAtmosphereBackgroundModifier: ViewModifier {
+    @AppStorage(PlantAtmosphereSettings.enabledKey) private var isEnabled = false
+
+    func body(content: Content) -> some View {
+        content
+            .scrollContentBackground(.hidden)
+            .background {
+                PlantAtmosphereBackground(isEnabled: isEnabled)
+                    .ignoresSafeArea()
+            }
+    }
+}
+
+extension View {
+    func plantAtmosphereBackground() -> some View {
+        modifier(PlantAtmosphereBackgroundModifier())
+    }
+}
+
 struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
@@ -136,10 +255,9 @@ struct ContentView: View {
                     if !favoritePlants.isEmpty {
                         FavoritePlantsSection(
                             plants: favoritePlants,
+                            store: favoritesStore,
                             layoutMode: layoutMode,
                             isCollapsed: collapsedBinding(for: "Favorites"),
-                            isFavorite: { favoritesStore.isFavorite($0) },
-                            toggleFavorite: { favoritesStore.toggle($0) },
                             showReorder: {
                                 showsFavoritesReorder = true
                             }
@@ -161,7 +279,7 @@ struct ContentView: View {
                 .padding(.top, 8)
                 .padding(.bottom, 28)
             }
-            .background(Color(.systemGroupedBackground))
+            .plantAtmosphereBackground()
             .navigationTitle("Native Plants")
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, prompt: "Search names, bloom, notes, traits")
@@ -314,7 +432,7 @@ private struct PlannerPlaceholderView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
-        .background(Color(.systemGroupedBackground))
+        .plantAtmosphereBackground()
     }
 }
 
@@ -344,7 +462,7 @@ private struct FilterSheet: View {
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
+            .plantAtmosphereBackground()
             .navigationTitle("Filters")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -424,12 +542,19 @@ private struct ChipLabel: View {
 
 private struct FavoritePlantsSection: View {
     let plants: [Plant]
+    @ObservedObject var store: FavoritePlantsStore
     let layoutMode: LayoutMode
     @Binding var isCollapsed: Bool
-    let isFavorite: (Plant) -> Bool
-    let toggleFavorite: (Plant) -> Void
     let showReorder: () -> Void
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var plantsByID: [String: Plant] {
+        Dictionary(uniqueKeysWithValues: plants.map { ($0.id, $0) })
+    }
+
+    private var visibleFavoriteIDs: Set<String> {
+        Set(plants.map(\.id))
+    }
 
     private var columns: [GridItem] {
         let count = horizontalSizeClass == .regular ? 3 : 2
@@ -447,40 +572,39 @@ private struct FavoritePlantsSection: View {
             if !isCollapsed {
                 if layoutMode == .grid {
                     LazyVGrid(columns: columns, spacing: 12) {
-                        ForEach(plants) { plant in
-                            NavigationLink(value: plant) {
-                                PlantGridCard(plant: plant, isFavorite: isFavorite(plant))
-                                    .frame(height: PlantGridCard.cardHeight)
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .buttonStyle(.plain)
-                            .contextMenu {
-                                FavoriteContextMenuButton(
-                                    isFavorite: isFavorite(plant),
-                                    toggleFavorite: {
-                                        toggleFavorite(plant)
-                                    }
-                                )
-                            }
-                        }
+                        favoriteLinks
                     }
                 } else {
                     LazyVStack(spacing: 10) {
-                        ForEach(plants) { plant in
-                            NavigationLink(value: plant) {
-                                PlantListRow(plant: plant, isFavorite: isFavorite(plant))
-                            }
-                            .buttonStyle(.plain)
-                            .contextMenu {
-                                FavoriteContextMenuButton(
-                                    isFavorite: isFavorite(plant),
-                                    toggleFavorite: {
-                                        toggleFavorite(plant)
-                                    }
-                                )
-                            }
-                        }
+                        favoriteLinks
                     }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var favoriteLinks: some View {
+        ForEach(store.favoriteIDs, id: \.self) { plantID in
+            if visibleFavoriteIDs.contains(plantID),
+               let plant = plantsByID[plantID] {
+                NavigationLink(value: plant) {
+                    if layoutMode == .grid {
+                        PlantGridCard(plant: plant, isFavorite: true)
+                            .frame(height: PlantGridCard.cardHeight)
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        PlantListRow(plant: plant, isFavorite: true)
+                    }
+                }
+                .buttonStyle(.plain)
+                .contextMenu {
+                    FavoriteContextMenuButton(
+                        isFavorite: true,
+                        toggleFavorite: {
+                            store.unfavorite(plant)
+                        }
+                    )
                 }
             }
         }
@@ -844,12 +968,14 @@ private struct FavoritesReorderView: View {
 
     @ViewBuilder
     private var favoriteRows: some View {
-        ForEach($store.favoriteIDs, id: \.self) { $plantID in
+        ForEach(store.favoriteIDs, id: \.self) { plantID in
             if let plant = plantsByID[plantID] {
                 FavoriteReorderRow(plant: plant)
             }
         }
-        .reorderable()
+        .onMove { offsets, destination in
+            store.favoriteIDs.move(fromOffsets: offsets, toOffset: destination)
+        }
     }
 }
 
@@ -933,7 +1059,7 @@ private struct PlantDetailView: View {
             }
             .padding()
         }
-        .background(Color(.systemGroupedBackground))
+        .plantAtmosphereBackground()
         .navigationTitle(plant.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -960,13 +1086,15 @@ private struct LegendView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 16) {
+                    PlantAtmosphereToggleCard()
+
                     ForEach(PlantIconography.legendGroups) { group in
                         LegendGroupView(group: group)
                     }
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
+            .plantAtmosphereBackground()
             .navigationTitle("Plant Key")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -977,6 +1105,27 @@ private struct LegendView: View {
                 }
             }
         }
+    }
+}
+
+private struct PlantAtmosphereToggleCard: View {
+    @AppStorage(PlantAtmosphereSettings.enabledKey) private var isEnabled = false
+
+    var body: some View {
+        Toggle(isOn: $isEnabled) {
+            Label {
+                Text("Plant Atmosphere")
+                    .font(.headline)
+            } icon: {
+                Image(systemName: isEnabled ? "leaf.fill" : "leaf")
+                    .foregroundStyle(Color.green)
+            }
+        }
+        .tint(.green)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(.regularMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 

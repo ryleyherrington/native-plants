@@ -63,6 +63,8 @@ struct WateringCalendarView: View {
                     .listStyle(.insetGrouped)
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .plantAtmosphereBackground()
             .navigationTitle("Watering Calendar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse and filter Oregon native plants for Willamette Valley yards.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Native Plants">
+    <meta property="og:description" content="A searchable Oregon native plant catalog with section, bloom, difficulty, and trait filters.">
+    <meta property="og:image" content="images/vine-maple.png">
+    <title>Native Plants</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="data/plants.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="title-row" aria-labelledby="pageTitle">
+        <div>
+          <p class="eyebrow">Willamette Valley yards</p>
+          <h1 id="pageTitle">Native Plants</h1>
+        </div>
+        <div class="summary-card" aria-live="polite">
+          <strong id="visibleCount">0</strong>
+          <span id="visibleLabel">plants</span>
+        </div>
+      </section>
+
+      <section class="catalog-layout" aria-label="Plant catalog">
+        <aside class="filter-panel" aria-label="Filters">
+          <div class="filter-panel-top">
+            <div>
+              <p class="panel-eyebrow">Catalog Controls</p>
+              <h2>Find Plants</h2>
+            </div>
+            <button id="mobileFilterToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="filterGroups">Filters</button>
+          </div>
+
+          <div class="search-block">
+            <label for="searchInput">Search</label>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Name, notes, bloom, traits">
+          </div>
+
+          <div class="view-switch" role="group" aria-label="Layout">
+            <button class="view-button is-active" type="button" data-layout="grid">Grid</button>
+            <button class="view-button" type="button" data-layout="list">List</button>
+          </div>
+
+          <div id="activeFilters" class="active-filters" aria-live="polite"></div>
+
+          <button id="clearFilters" class="clear-button" type="button" disabled>Clear Filters</button>
+
+          <div id="filterGroups" class="filter-groups"></div>
+        </aside>
+
+        <section class="results-panel">
+          <div id="sectionStack" class="section-stack"></div>
+          <div id="emptyState" class="empty-state" hidden>
+            <h2>No plants found</h2>
+            <p>Clear a filter or search for a broader plant trait.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="plantDialog" class="plant-dialog" aria-labelledby="dialogTitle">
+      <div class="dialog-scroll">
+        <div class="dialog-hero">
+          <img id="dialogImage" alt="">
+          <button id="closeDialog" class="dialog-close" type="button" aria-label="Close">Close</button>
+        </div>
+        <div class="dialog-body">
+          <div class="dialog-title-row">
+            <div>
+              <p id="dialogSection" class="eyebrow"></p>
+              <h2 id="dialogTitle"></h2>
+              <p id="dialogScientific" class="scientific"></p>
+            </div>
+            <button id="dialogFavorite" class="favorite-toggle" type="button"></button>
+          </div>
+
+          <dl class="detail-grid">
+            <div>
+              <dt>Habit</dt>
+              <dd id="dialogHabit"></dd>
+            </div>
+            <div>
+              <dt>Size</dt>
+              <dd id="dialogSize"></dd>
+            </div>
+            <div>
+              <dt>Ease</dt>
+              <dd id="dialogDifficulty"></dd>
+            </div>
+            <div>
+              <dt>Bloom</dt>
+              <dd id="dialogBloom"></dd>
+            </div>
+          </dl>
+
+          <p id="dialogNotes" class="notes"></p>
+
+          <div>
+            <h3>Traits</h3>
+            <div id="dialogTraits" class="trait-list"></div>
+          </div>
+
+          <div>
+            <h3>Plant Cues</h3>
+            <img id="dialogIcons" class="detail-icons" alt="">
+          </div>
+
+          <p id="dialogSource" class="source-note"></p>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
