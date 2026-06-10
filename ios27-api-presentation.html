@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Native Plants: Modern iOS APIs</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17221b;
+      --muted: #667064;
+      --line: #d8dfd5;
+      --paper: #f7f8f2;
+      --panel: #ffffff;
+      --panel-2: #eef4e7;
+      --green: #28663f;
+      --green-2: #5d8a39;
+      --blue: #245f72;
+      --rose: #a34e52;
+      --gold: #aa7833;
+      --code: #101714;
+      --code-line: #dce8da;
+      --shadow: 0 18px 48px rgba(35, 52, 38, 0.14);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(247, 248, 242, 0.96), rgba(244, 247, 240, 0.98)),
+        radial-gradient(circle at 20% 12%, rgba(93, 138, 57, 0.16), transparent 34%),
+        radial-gradient(circle at 82% 24%, rgba(36, 95, 114, 0.12), transparent 28%);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      height: 5px;
+      background: rgba(216, 223, 213, 0.82);
+    }
+
+    .progress span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--blue), var(--rose));
+      transition: width 180ms ease;
+    }
+
+    .deck-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .slide {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 70px clamp(22px, 5vw, 78px) 54px;
+      border-bottom: 1px solid rgba(216, 223, 213, 0.88);
+    }
+
+    .slide-inner {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+    }
+
+    .slide-kicker {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin-bottom: 22px;
+      font-size: clamp(3.1rem, 8vw, 7.4rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: clamp(2.35rem, 5vw, 4.9rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+      line-height: 1.15;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: #334238;
+      font-size: clamp(1.22rem, 2.2vw, 1.75rem);
+      line-height: 1.35;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: #111a14;
+      color: #fffaf2;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("Homepage+AI.PNG");
+      background-position: center;
+      background-size: cover;
+      filter: saturate(0.92) brightness(0.72);
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(11, 20, 14, 0.88), rgba(11, 20, 14, 0.58) 44%, rgba(11, 20, 14, 0.12));
+    }
+
+    .hero .slide-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(300px, 0.64fr);
+      gap: 42px;
+      align-items: end;
+    }
+
+    .hero .lead {
+      color: rgba(255, 250, 242, 0.88);
+    }
+
+    .hero-metrics {
+      display: grid;
+      gap: 12px;
+      align-self: end;
+    }
+
+    .metric {
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 250, 242, 0.78);
+      font-size: 0.88rem;
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(24px, 4vw, 54px);
+      align-items: center;
+    }
+
+    .three-up {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .text-panel {
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .text-panel.compact {
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .text-panel strong {
+      color: var(--green);
+    }
+
+    .callout {
+      display: grid;
+      gap: 10px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--green);
+      background: var(--panel-2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: #263526;
+    }
+
+    .points {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .points .num {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #dfead6;
+      color: var(--green);
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .image-frame {
+      overflow: hidden;
+      background: #e8eee4;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-frame.ipad {
+      aspect-ratio: 4 / 3;
+    }
+
+    .image-frame.phone {
+      max-width: 330px;
+      aspect-ratio: 1206 / 2622;
+      margin-inline: auto;
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.72fr 0.72fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .code-card {
+      overflow: hidden;
+      background: var(--code);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 48px rgba(16, 23, 20, 0.24);
+    }
+
+    .code-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 16px;
+      color: #dce8da;
+      background: #17231d;
+      border-bottom: 1px solid rgba(220, 232, 218, 0.1);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    pre {
+      max-height: min(60vh, 610px);
+      margin: 0;
+      padding: 18px;
+      overflow: auto;
+      color: #eef8ea;
+      font: 0.86rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      white-space: pre;
+      tab-size: 2;
+    }
+
+    .code-comment {
+      color: #98aa9a;
+    }
+
+    .code-keyword {
+      color: #9ed0ff;
+    }
+
+    .code-type {
+      color: #f4c16c;
+    }
+
+    .code-string {
+      color: #bde38a;
+    }
+
+    .code-attr {
+      color: #f3a6a2;
+    }
+
+    .code-flow {
+      color: #d4b2ff;
+    }
+
+    .diagram {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .flow-node {
+      display: grid;
+      align-content: center;
+      min-height: 118px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-node strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green);
+    }
+
+    .flow-arrow {
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border: 1px solid rgba(40, 102, 63, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      color: #2c5638;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .demo-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: demo;
+    }
+
+    .demo-list li {
+      counter-increment: demo;
+      padding: 18px 18px 18px 64px;
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .demo-list li::before {
+      content: counter(demo);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .nav-controls {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 45;
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-controls button {
+      min-width: 46px;
+      height: 42px;
+      border: 1px solid rgba(23, 34, 27, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(35, 52, 38, 0.12);
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-controls button:hover {
+      border-color: rgba(40, 102, 63, 0.48);
+      color: var(--green);
+    }
+
+    .slide-count {
+      min-width: 70px;
+      display: grid;
+      place-items: center;
+      padding: 0 12px;
+      border: 1px solid rgba(23, 34, 27, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(35, 52, 38, 0.12);
+      backdrop-filter: blur(14px);
+    }
+
+    .source-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .source-note code,
+    .inline-code {
+      padding: 2px 5px;
+      background: rgba(40, 102, 63, 0.1);
+      border: 1px solid rgba(40, 102, 63, 0.12);
+      border-radius: 5px;
+      color: #224c31;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9em;
+    }
+
+    .api-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .api-strip .text-panel {
+      min-height: 160px;
+      box-shadow: none;
+    }
+
+    .closing {
+      background: #17221b;
+      color: #f7f8f2;
+    }
+
+    .closing .lead,
+    .closing .muted {
+      color: rgba(247, 248, 242, 0.78);
+    }
+
+    .closing .text-panel {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+      color: #f7f8f2;
+      box-shadow: none;
+    }
+
+    .closing .text-panel strong {
+      color: #cce6a9;
+    }
+
+    @media (max-width: 940px) {
+      body {
+        font-size: 16px;
+      }
+
+      .hero .slide-inner,
+      .two-up,
+      .flow-row,
+      .screenshot-grid,
+      .three-up,
+      .api-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+
+      .slide {
+        min-height: auto;
+        padding-top: 58px;
+      }
+
+      pre {
+        font-size: 0.78rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .progress,
+      .nav-controls {
+        display: none;
+      }
+
+      .slide {
+        min-height: auto;
+        page-break-after: always;
+        padding: 34px;
+      }
+
+      .hero {
+        color: var(--ink);
+        background: #fff;
+      }
+
+      .hero::before,
+      .hero::after {
+        display: none;
+      }
+
+      .code-card,
+      .text-panel,
+      .image-frame {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <main class="deck-shell" id="deck">
+    <section class="slide hero" data-title="Title">
+      <div class="slide-inner">
+        <div>
+          <p class="slide-kicker">Native Plants / iOS API showcase</p>
+          <h1>Modern iOS APIs with real app code</h1>
+          <p class="lead">A concrete tour of Foundation Models, App Intents, Spotlight entities, PhotosUI, and SwiftUI using the Native Plants app.</p>
+          <div class="tag-row" aria-label="Covered APIs">
+            <span class="tag">Foundation Models</span>
+            <span class="tag">App Intents</span>
+            <span class="tag">Core Spotlight</span>
+            <span class="tag">PhotosUI</span>
+            <span class="tag">SwiftUI</span>
+          </div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>Catalog-backed AI</strong>
+            <span>Answers are constrained to plants that exist in the app.</span>
+          </div>
+          <div class="metric">
+            <strong>Siri-ready watering</strong>
+            <span>Watering workflows are App Intents and Shortcuts, not private UI paths.</span>
+          </div>
+          <div class="metric">
+            <strong>System-visible content</strong>
+            <span>Plants and watering schedules are indexed as app entities.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Why">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">The framing</p>
+          <h2>New APIs make app data legible to the system</h2>
+          <p class="lead">The important shift is not a single framework. It is that the app exposes domain concepts - plants, watering schedules, planner turns, and favorite order - through system-native surfaces.</p>
+        </div>
+
+        <div class="diagram">
+          <div class="flow-row">
+            <div class="flow-node">
+              <strong>App model</strong>
+              Plants, traits, schedules, favorites, planner history.
+            </div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-node">
+              <strong>System API</strong>
+              Foundation Models, App Intents, Spotlight, PhotosUI, SwiftUI.
+            </div>
+            <div class="flow-arrow">-&gt;</div>
+            <div class="flow-node">
+              <strong>User surface</strong>
+              Siri actions, Search results, planner answers, adaptive UI.
+            </div>
+          </div>
+          <p class="source-note">The examples are drawn from <code>NativePlants/PlantPlanner.swift</code>, <code>WateringAppIntents.swift</code>, <code>WateringSchedule.swift</code>, and <code>ContentView.swift</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="App">
+      <div class="slide-inner">
+        <p class="slide-kicker">The project</p>
+        <h2>A small app with enough real surface area</h2>
+        <div class="screenshot-grid">
+          <figure class="image-frame ipad">
+            <img src="Homepage+AI.PNG" alt="Native Plants iPad home page with catalog and AI plant planner">
+          </figure>
+          <figure class="image-frame phone">
+            <img src="iphone-grid.png" alt="Native Plants iPhone plant catalog grid">
+          </figure>
+          <figure class="image-frame phone">
+            <img src="iphone-ai-type.png" alt="Native Plants iPhone AI planner composer">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Runtime">
+      <div class="slide-inner two-up">
+        <div class="stack">
+          <div>
+            <p class="slide-kicker">Foundation Models</p>
+            <h2>Treat Apple Intelligence as runtime capability</h2>
+            <p class="lead">The code checks framework availability, OS availability, model availability, and user/device state before trying to ask the model anything.</p>
+          </div>
+          <div class="callout">
+            <strong>Presentation point</strong>
+            The fallback is not an error path. It is a product path: the deterministic catalog matcher still answers with useful plant recommendations.
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/PlantPlanner.swift</span>
+            <span>runtime status</span>
+          </div>
+<pre><code><span class="code-keyword">#if</span> canImport(FoundationModels)
+<span class="code-keyword">if</span> <span class="code-attr">#available</span>(iOS 26.0, *) {
+    <span class="code-keyword">switch</span> <span class="code-type">SystemLanguageModel</span>.default.availability {
+    <span class="code-keyword">case</span> .available:
+        <span class="code-keyword">return</span> <span class="code-type">PlantPlannerRuntimeStatus</span>(
+            isAvailable: <span class="code-keyword">true</span>,
+            message: <span class="code-string">"Apple Intelligence is available."</span>,
+            symbolName: <span class="code-string">"sparkles"</span>
+        )
+    <span class="code-keyword">case</span> .unavailable(.modelNotReady):
+        <span class="code-keyword">return</span> <span class="code-type">PlantPlannerRuntimeStatus</span>(
+            isAvailable: <span class="code-keyword">false</span>,
+            message: <span class="code-string">"The Apple Intelligence model is not ready yet, so the catalog planner will answer."</span>,
+            symbolName: <span class="code-string">"clock"</span>
+        )
+    <span class="code-keyword">default</span>:
+        <span class="code-keyword">return</span> <span class="code-type">PlantPlannerRuntimeStatus</span>(
+            isAvailable: <span class="code-keyword">false</span>,
+            message: <span class="code-string">"Apple Intelligence is not available right now."</span>,
+            symbolName: <span class="code-string">"leaf.fill"</span>
+        )
+    }
+}
+<span class="code-keyword">#endif</span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Schema">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">Structured output</p>
+          <h2>Do not ask for prose when you need app data</h2>
+          <p class="lead">The planner ranks candidate plants locally, gives those IDs to the model, and requires the model to return only IDs from that set.</p>
+          <ul class="points">
+            <li><span class="num">1</span><span>Local matcher narrows the full catalog to 32 candidates.</span></li>
+            <li><span class="num">2</span><span>The schema defines a <span class="inline-code">PlantID</span> enum from those candidates.</span></li>
+            <li><span class="num">3</span><span>The response is decoded and mapped back to catalog plants.</span></li>
+          </ul>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/PlantPlanner.swift</span>
+            <span>bounded generation</span>
+          </div>
+<pre><code><span class="code-keyword">let</span> candidates = <span class="code-type">PlantPlanningMatcher</span>.rankedPlants(
+    for: question,
+    in: plants,
+    limit: 32
+)
+
+<span class="code-keyword">let</span> plantIDSchema = <span class="code-type">DynamicGenerationSchema</span>(
+    name: <span class="code-string">"PlantID"</span>,
+    description: <span class="code-string">"A plant ID from the candidate catalog."</span>,
+    anyOf: candidates.map(\.id)
+)
+
+<span class="code-keyword">let</span> recommendationIDsSchema = <span class="code-type">DynamicGenerationSchema</span>(
+    arrayOf: <span class="code-type">DynamicGenerationSchema</span>(referenceTo: <span class="code-string">"PlantID"</span>),
+    minimumElements: 3,
+    maximumElements: 5
+)
+
+<span class="code-keyword">let</span> response = <span class="code-keyword">try await</span> session.respond(
+    to: prompt(for: question, history: history, candidates: candidates, hasPhoto: hasPhoto),
+    schema: <span class="code-keyword">try</span> planSchema(for: candidates),
+    options: <span class="code-type">GenerationOptions</span>(temperature: 0.3, maximumResponseTokens: 650)
+)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Photos">
+      <div class="slide-inner two-up">
+        <div class="image-frame ipad">
+          <img src="Homepage+AI.PNG" alt="Native Plants planner shown beside the catalog on iPad">
+        </div>
+
+        <div class="stack">
+          <div>
+            <p class="slide-kicker">PhotosUI</p>
+            <h2>Photo attachment as explicit planning context</h2>
+            <p class="lead">The planner lets the user attach a yard photo or sketch, but the prompt is careful about what the model may infer.</p>
+          </div>
+
+          <div class="code-card">
+            <div class="code-title">
+              <span>NativePlants/PlantPlanner.swift</span>
+              <span>photo picker</span>
+            </div>
+<pre><code><span class="code-type">PhotosPicker</span>(selection: $selectedPhotoItem, matching: .images) {
+    <span class="code-type">Image</span>(systemName: selectedPhoto == <span class="code-keyword">nil</span>
+        ? <span class="code-string">"photo.badge.plus"</span>
+        : <span class="code-string">"photo.fill"</span>)
+}
+
+<span class="code-keyword">guard let</span> data = <span class="code-keyword">try await</span> item.loadTransferable(type: <span class="code-type">Data</span>.<span class="code-keyword">self</span>) <span class="code-keyword">else</span> {
+    selectedPhoto = <span class="code-keyword">nil</span>
+    photoLoadError = <span class="code-string">"That photo could not be loaded."</span>
+    <span class="code-keyword">return</span>
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Entities">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">App Intents</p>
+          <h2>Start by modeling the nouns</h2>
+          <p class="lead">Before Siri can schedule watering, the system needs a durable, searchable representation of a plant.</p>
+          <div class="callout">
+            <strong>Engineering point</strong>
+            The entity query is the boundary between system language and app data. Keep it deterministic and backed by the same catalog the UI uses.
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/WateringAppIntents.swift</span>
+            <span>PlantEntity</span>
+          </div>
+<pre><code><span class="code-keyword">struct</span> <span class="code-type">PlantEntity</span>: <span class="code-type">AppEntity</span> {
+    <span class="code-keyword">static let</span> typeDisplayRepresentation =
+        <span class="code-type">TypeDisplayRepresentation</span>(name: <span class="code-string">"Plant"</span>)
+    <span class="code-keyword">static let</span> defaultQuery = <span class="code-type">PlantEntityQuery</span>()
+
+    <span class="code-keyword">let</span> id: <span class="code-type">String</span>
+    <span class="code-keyword">let</span> name: <span class="code-type">String</span>
+    <span class="code-keyword">let</span> scientificName: <span class="code-type">String</span>
+    <span class="code-keyword">let</span> traits: [<span class="code-type">String</span>]
+
+    <span class="code-keyword">var</span> displayRepresentation: <span class="code-type">DisplayRepresentation</span> {
+        <span class="code-type">DisplayRepresentation</span>(
+            title: <span class="code-string">"\(name)"</span>,
+            subtitle: <span class="code-string">"\(scientificName)"</span>,
+            image: .init(systemName: <span class="code-string">"leaf.fill"</span>)
+        )
+    }
+}
+
+<span class="code-keyword">struct</span> <span class="code-type">PlantEntityQuery</span>: <span class="code-type">EnumerableEntityQuery</span>, <span class="code-type">EntityStringQuery</span> {
+    <span class="code-keyword">func</span> entities(matching string: <span class="code-type">String</span>) <span class="code-keyword">async throws</span> -&gt; [<span class="code-type">PlantEntity</span>] {
+        <span class="code-keyword">let</span> query = string.foldedForSearch
+        <span class="code-keyword">return</span> <span class="code-type">PlantCatalog</span>.load()
+            .filter { $0.searchableText.contains(query) }
+            .map(<span class="code-type">PlantEntity</span>.init)
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Intents">
+      <div class="slide-inner two-up">
+        <div class="stack">
+          <div>
+            <p class="slide-kicker">Siri and Shortcuts</p>
+            <h2>Expose real workflows, not screen taps</h2>
+            <p class="lead">Scheduling and marking watering are domain actions. The app exposes them as intents with typed parameters, returned values, and spoken dialogs.</p>
+          </div>
+          <div class="image-frame ipad">
+            <img src="Watering-schedule.png" alt="Native Plants watering calendar with due and upcoming schedules">
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/WateringAppIntents.swift</span>
+            <span>schedule watering</span>
+          </div>
+<pre><code><span class="code-keyword">struct</span> <span class="code-type">ScheduleWateringIntent</span>: <span class="code-type">AppIntent</span> {
+    <span class="code-keyword">static let</span> title: <span class="code-type">LocalizedStringResource</span> =
+        <span class="code-string">"Schedule Plant Watering"</span>
+
+    <span class="code-attr">@Parameter</span>(title: <span class="code-string">"Plant"</span>)
+    <span class="code-keyword">var</span> plant: <span class="code-type">PlantEntity</span>
+
+    <span class="code-attr">@Parameter</span>(title: <span class="code-string">"First Watering"</span>, kind: .date)
+    <span class="code-keyword">var</span> startDate: <span class="code-type">Date</span>
+
+    <span class="code-attr">@MainActor</span>
+    <span class="code-keyword">func</span> perform() <span class="code-keyword">async throws</span> -&gt; <span class="code-keyword">some</span> <span class="code-type">ReturnsValue</span>&lt;<span class="code-type">WateringScheduleEntity</span>&gt; &amp; <span class="code-type">ProvidesDialog</span> {
+        <span class="code-keyword">let</span> schedule = <span class="code-type">WateringScheduleStore</span>.shared.upsertSchedule(
+            for: catalogPlant,
+            startDate: startDate,
+            intervalDays: intervalDays,
+            notes: notes ?? <span class="code-string">""</span>
+        )
+
+        <span class="code-keyword">return</span> .result(
+            value: <span class="code-type">WateringScheduleEntity</span>(schedule: schedule),
+            dialog: <span class="code-string">"I scheduled \(catalogPlant.name)."</span>
+        )
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Shortcuts">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">AppShortcutsProvider</p>
+          <h2>Make the actions discoverable</h2>
+          <p class="lead">The shortcuts provider gives the system suggested phrases, tile color, titles, and icons so the actions can appear in Siri and Shortcuts.</p>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/WateringAppIntents.swift</span>
+            <span>shortcuts</span>
+          </div>
+<pre><code><span class="code-keyword">struct</span> <span class="code-type">NativePlantsAppShortcuts</span>: <span class="code-type">AppShortcutsProvider</span> {
+    <span class="code-keyword">static var</span> shortcutTileColor: <span class="code-type">ShortcutTileColor</span> = .lime
+
+    <span class="code-keyword">static var</span> appShortcuts: [<span class="code-type">AppShortcut</span>] {
+        <span class="code-type">AppShortcut</span>(
+            intent: <span class="code-type">ScheduleWateringIntent</span>(),
+            phrases: [
+                <span class="code-string">"Schedule plant watering in \(.applicationName)"</span>,
+                <span class="code-string">"Add watering to \(.applicationName)"</span>
+            ],
+            shortTitle: <span class="code-string">"Schedule Watering"</span>,
+            systemImageName: <span class="code-string">"drop.fill"</span>
+        )
+
+        <span class="code-type">AppShortcut</span>(
+            intent: <span class="code-type">MarkPlantWateredIntent</span>(),
+            phrases: [
+                <span class="code-string">"Mark plant watered in \(.applicationName)"</span>,
+                <span class="code-string">"I watered a plant in \(.applicationName)"</span>
+            ],
+            shortTitle: <span class="code-string">"Mark Watered"</span>,
+            systemImageName: <span class="code-string">"checkmark.circle.fill"</span>
+        )
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Spotlight">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">Core Spotlight</p>
+          <h2>Index app entities, not loose strings</h2>
+          <p class="lead">The app indexes both plants and watering schedules. Search can find a plant by common name, scientific name, trait, or watering-related context.</p>
+          <ul class="points">
+            <li><span class="num">A</span><span><span class="inline-code">IndexedEntity</span> controls the searchable metadata.</span></li>
+            <li><span class="num">B</span><span><span class="inline-code">CSSearchableIndex.indexAppEntities</span> publishes the actual app entities.</span></li>
+            <li><span class="num">C</span><span>Deleting a schedule removes the matching indexed entity.</span></li>
+          </ul>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/WateringSchedule.swift</span>
+            <span>entity indexing</span>
+          </div>
+<pre><code><span class="code-keyword">extension</span> <span class="code-type">PlantEntity</span>: <span class="code-type">IndexedEntity</span> {
+    <span class="code-keyword">var</span> attributeSet: <span class="code-type">CSSearchableItemAttributeSet</span> {
+        <span class="code-keyword">let</span> attributes = defaultAttributeSet
+        attributes.title = name
+        attributes.contentDescription =
+            <span class="code-string">"\(scientificName). \(section). \(difficulty). \(notes)"</span>
+        attributes.keywords = traits + [
+            scientificName,
+            section,
+            difficulty,
+            <span class="code-string">"native plant"</span>,
+            <span class="code-string">"watering"</span>
+        ]
+        <span class="code-keyword">return</span> attributes
+    }
+}
+
+<span class="code-keyword">let</span> plantEntities = plants.map(<span class="code-type">PlantEntity</span>.init)
+<span class="code-keyword">let</span> scheduleEntities = schedules.map(<span class="code-type">WateringScheduleEntity</span>.init)
+
+<span class="code-keyword">try?</span> <span class="code-keyword">await</span> searchableIndex.indexAppEntities(plantEntities)
+<span class="code-keyword">try?</span> <span class="code-keyword">await</span> searchableIndex.indexAppEntities(scheduleEntities)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Context">
+      <div class="slide-inner two-up">
+        <div class="stack">
+          <div>
+            <p class="slide-kicker">NSUserActivity + app entities</p>
+            <h2>Tell the system which entity is on screen</h2>
+            <p class="lead">When a plant detail page is visible, the activity carries an app entity identifier for that exact plant.</p>
+          </div>
+          <div class="three-up">
+            <figure class="image-frame">
+              <img src="NativePlants/Images/oregon-white-oak.png" alt="Oregon white oak">
+            </figure>
+            <figure class="image-frame">
+              <img src="NativePlants/Images/serviceberry.png" alt="Serviceberry">
+            </figure>
+            <figure class="image-frame">
+              <img src="NativePlants/Images/sword-fern.png" alt="Sword fern">
+            </figure>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/ContentView.swift</span>
+            <span>entity-linked activity</span>
+          </div>
+<pre><code>.userActivity(<span class="code-string">"dev.ryleyherrington.NativePlants.viewPlant"</span>) { activity <span class="code-keyword">in</span>
+    <span class="code-keyword">if</span> <span class="code-attr">#available</span>(iOS 18.2, *) {
+        activity.appEntityIdentifier = <span class="code-type">EntityIdentifier</span>(
+            for: <span class="code-type">PlantEntity</span>.<span class="code-keyword">self</span>,
+            identifier: plant.id
+        )
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="SwiftUI">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">SwiftUI</p>
+          <h2>One catalog UI, two device shapes</h2>
+          <p class="lead">The app keeps the catalog and planner side by side on iPad, then falls back to sheet-driven planner presentation on compact iPhone layouts.</p>
+          <div class="tag-row">
+            <span class="tag">NavigationSplitView</span>
+            <span class="tag">NavigationStack</span>
+            <span class="tag">Searchable catalog</span>
+            <span class="tag">Adaptive sheets</span>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/ContentView.swift</span>
+            <span>adaptive shell</span>
+          </div>
+<pre><code><span class="code-keyword">var</span> body: <span class="code-keyword">some</span> <span class="code-type">View</span> {
+    <span class="code-type">NavigationSplitView</span>(
+        columnVisibility: $columnVisibility,
+        preferredCompactColumn: $preferredCompactColumn
+    ) {
+        catalogColumn
+            .navigationSplitViewColumnWidth(min: 320, ideal: 540, max: 760)
+    } detail: {
+        plannerDetail
+    }
+    .navigationSplitViewStyle(.balanced)
+    .sheet(isPresented: $showsPlannerSheet) {
+        <span class="code-type">PlantPlannerView</span>(plants: plants) {
+            showsPlannerSheet = <span class="code-keyword">false</span>
+        }
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Reorder">
+      <div class="slide-inner two-up">
+        <div class="stack">
+          <div>
+            <p class="slide-kicker">SwiftUI reorderable content</p>
+            <h2>Favorite order is the data model</h2>
+            <p class="lead">The reorder sheet binds directly to persisted favorite IDs. Reordering is not a temporary UI trick; it updates the source of truth.</p>
+          </div>
+          <div class="image-frame ipad">
+            <img src="native-plants-filters.png" alt="Native Plants filter sheet on iPad">
+          </div>
+        </div>
+
+        <div class="code-card">
+          <div class="code-title">
+            <span>NativePlants/ContentView.swift</span>
+            <span>favorites reorder</span>
+          </div>
+<pre><code><span class="code-keyword">private var</span> favoriteRows: <span class="code-keyword">some</span> <span class="code-type">View</span> {
+    <span class="code-type">ForEach</span>($store.favoriteIDs, id: \.<span class="code-keyword">self</span>) { $plantID <span class="code-keyword">in</span>
+        <span class="code-keyword">if let</span> plant = plantsByID[plantID] {
+            <span class="code-type">FavoriteReorderRow</span>(plant: plant)
+        }
+    }
+    .reorderable()
+}
+
+<span class="code-attr">@Published</span> <span class="code-keyword">var</span> favoriteIDs: [<span class="code-type">String</span>] {
+    <span class="code-keyword">didSet</span> {
+        save()
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Demo">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">Live demo path</p>
+          <h2>A practical sequence for the room</h2>
+          <p class="lead">This order keeps the talk tied to visible product behavior before dropping into code.</p>
+        </div>
+
+        <ol class="demo-list">
+          <li>Open the catalog and show search or filters so the team sees the domain data.</li>
+          <li>Open Plant Planner and ask for a shady, moist, wildlife-friendly bed.</li>
+          <li>Point out that generated recommendations map back to real catalog plants.</li>
+          <li>Open Watering Calendar and show schedule creation from the app UI.</li>
+          <li>Show the App Intent that exposes the same watering action to Siri and Shortcuts.</li>
+          <li>Close with Spotlight indexing and app entity linking as the connective layer.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Takeaways">
+      <div class="slide-inner">
+        <p class="slide-kicker">Design principles</p>
+        <h2>What to copy into other apps</h2>
+        <div class="api-strip">
+          <div class="text-panel">
+            <h3>Constrain AI to app data</h3>
+            <p>Rank candidates locally, use structured schemas, and validate IDs before showing output.</p>
+          </div>
+          <div class="text-panel">
+            <h3>Model nouns first</h3>
+            <p>Good App Intents start with durable app entities and reliable queries.</p>
+          </div>
+          <div class="text-panel">
+            <h3>Index entities</h3>
+            <p>Spotlight is strongest when it receives app entities with useful metadata.</p>
+          </div>
+          <div class="text-panel">
+            <h3>Keep fallbacks real</h3>
+            <p>Availability checks should land on a meaningful product behavior, not a dead end.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide closing" data-title="Close">
+      <div class="slide-inner two-up">
+        <div>
+          <p class="slide-kicker">Closing thought</p>
+          <h2>The system can only help with the app concepts it can see</h2>
+          <p class="lead">Native Plants is a small app, but the API pattern scales: expose domain entities, expose domain actions, constrain generated output, and keep the UI adaptive.</p>
+        </div>
+        <div class="stack">
+          <div class="text-panel">
+            <strong>Foundation Models</strong>
+            <p>Catalog-backed planning with bounded structured output.</p>
+          </div>
+          <div class="text-panel">
+            <strong>App Intents + Spotlight</strong>
+            <p>Watering workflows and plant records available outside the app chrome.</p>
+          </div>
+          <div class="text-panel">
+            <strong>SwiftUI</strong>
+            <p>A compact app that still behaves like a native iPhone and iPad product.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-controls" aria-label="Presentation navigation">
+    <button id="prevSlide" type="button" aria-label="Previous slide">&lt;</button>
+    <div class="slide-count" id="slideCount" aria-live="polite">1 / 16</div>
+    <button id="nextSlide" type="button" aria-label="Next slide">&gt;</button>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const progressBar = document.getElementById("progressBar");
+    const slideCount = document.getElementById("slideCount");
+    const previousButton = document.getElementById("prevSlide");
+    const nextButton = document.getElementById("nextSlide");
+    let currentIndex = 0;
+
+    function nearestSlideIndex() {
+      const viewportCenter = window.scrollY + window.innerHeight / 2;
+      let bestIndex = 0;
+      let bestDistance = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        const slideCenter = slide.offsetTop + slide.offsetHeight / 2;
+        const distance = Math.abs(viewportCenter - slideCenter);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+      });
+
+      return bestIndex;
+    }
+
+    function updateChrome() {
+      currentIndex = nearestSlideIndex();
+      const percent = slides.length <= 1
+        ? 100
+        : (currentIndex / (slides.length - 1)) * 100;
+      progressBar.style.width = `${percent}%`;
+      slideCount.textContent = `${currentIndex + 1} / ${slides.length}`;
+      previousButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex === slides.length - 1;
+    }
+
+    function goToSlide(index) {
+      const bounded = Math.max(0, Math.min(index, slides.length - 1));
+      slides[bounded].scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    previousButton.addEventListener("click", () => goToSlide(currentIndex - 1));
+    nextButton.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+    window.addEventListener("keydown", event => {
+      if (event.defaultPrevented) return;
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(currentIndex + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(currentIndex - 1);
+      }
+      if (event.key === "Home") {
+        event.preventDefault();
+        goToSlide(0);
+      }
+      if (event.key === "End") {
+        event.preventDefault();
+        goToSlide(slides.length - 1);
+      }
+    });
+
+    window.addEventListener("scroll", updateChrome, { passive: true });
+    window.addEventListener("resize", updateChrome);
+    updateChrome();
+  </script>
+</body>
+</html>
